@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Inter';
+    src: url('/fonts/inter/Inter.otf') format('truetype-collection');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Aston';
+    src: url('/fonts/aston/aston.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply font-inter;
+}
