@@ -1,5 +1,6 @@
 <script lang="ts">
 	import sign from "$lib/assets/sign-min.png";
+	import { shapes, colors } from '$lib/constants/shapes';
 	import AOS from "aos";
 	import { onMount } from 'svelte';
 
@@ -7,44 +8,15 @@
 		AOS.init();
 	});
 
-	const shapes = [
-		{
-			color: '#8E7AB5',
-			href: '/wavy',
-			direction: 'fade-right',
-			delay: 0,
-		},
-		{
-			color: '#B784B7',
-			href: '/wavy',
-			direction: 'fade-down',
-			delay: 100,
-		},
-		{
-			color: '#E493B3',
-			href: '/wavy',
-			direction: 'fade-left',
-			delay: 200,
-		},
-		{
-			color: '#EEA5A6',
-			href: '/wavy',
-			direction: 'fade-right',
-			delay: 500,
-		},
-		{
-			color: '#8E7AB5',
-			href: '/wavy',
-			direction: 'fade-up',
-			delay: 400,
-		},
-		{
-			color: '#B784B7',
-			href: '/wavy',
-			direction: 'fade-left',
-			delay: 300,
-		},
-	];
+	let hoveredIndex = 0;
+
+	function handleMouseEnter(index) {
+		hoveredIndex = index + 1;
+	}
+
+	function handleMouseLeave() {
+		hoveredIndex = 0; // Reset on mouse leave
+	}
 </script>
 
 <svelte:head>
@@ -54,9 +26,12 @@
 <div class="dark h-screen w-screen flex items-center justify-center bg-[#121212]">
 	<div class="w-full h-full flex items-center justify-center">
 		<div class="grid grid-cols-3 place-items-center place-content-center">
-			{#each shapes as shape}
+			{#each shapes as shape, i}
+<!--				href={shape.href}-->
 				<a
-					href={shape.href}
+					href="/"
+					on:mouseenter={() => handleMouseEnter(i)}
+					on:mouseleave={handleMouseLeave}
 					class="transition ease-in-out duration-200 hover:scale-110"
 				>
 					<div
@@ -64,9 +39,13 @@
 						data-aos-duration={750}
 						data-aos-delay={shape.delay}
 						data-aos-easing="ease-in-out"
-						class="h-64 w-64 col-span-1 m-4 rounded-xl cursor-pointer"
-						style="background-color: {shape.color}"
 					>
+						<div
+							class="h-64 w-64 col-span-1 m-4 rounded-xl cursor-pointer
+							transition-colors ease-in-out duration-8000"
+							style="background-color: {colors[hoveredIndex][i]}"
+						>
+						</div>
 					</div>
 				</a>
 			{/each}
