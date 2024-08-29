@@ -17,7 +17,7 @@ export default [
 				...globals.browser,
 				...globals.node
 			}
-		}
+		},
 	},
 	{
 		files: ['**/*.svelte'],

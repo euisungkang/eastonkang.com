@@ -36,7 +36,7 @@ const colors = [
 		alt: '[&:not(:hover)]:bg-[#51565E]',
 	},
 	{
-		main: 'hover:bg-[#70589F]',
+		main: 'bg-[#8E7AB5]',
 		alt: '[&:not(:hover)]:bg-[#8E7AB5]',
 	},
 	{
@@ -105,12 +105,12 @@ const shapes = [
 		direction: 'fade-up',
 		delay: 400,
 		transitions: [
+			'invisible',
+			'invisible',
+			'invisible',
+			'invisible',
 			'',
-			'',
-			'',
-			'',
-			'',
-			'',
+			'invisible',
 		],
 	},
 	{

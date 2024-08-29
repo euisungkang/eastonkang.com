@@ -3,6 +3,7 @@
 	import AOS from 'aos';
 	import Signature from '$lib/components/home/Signature.svelte';
 	import { onMount } from 'svelte';
+	import BlueHover from '$lib/components/home/hover/BlueHover.svelte';
 
 	let hoveredIndex: number = -1;
 	let handleMouseEnter: (index: number) => void;
@@ -61,36 +62,31 @@
 			{/each}
 		</div>
 	</div>
-	{#if hoveredIndex === 0}
+
+	{#if hoveredIndex === 4}
 		<div
-			data-aos="slide-left"
+			data-aos="fade-up"
+			data-aos-delay={200}
 			data-aos-duration={1000}
-			data-aos-easing="ease-in-out"
-			data-aos-delay={250}
-			data-aos-once="true"
-			class={
-			`absolute top-0 left-0 font-nk57 text-[25vh] text-[#8EA7E9] w-screen h-[25vh]
-				flex items-center justify-center !pointer-events-none`
-			}
-	  >
-			TESTING
+			class="absolute h-[200vh] w-full !pointer-events-none
+			 perspective-[150px] perspective-origin-[50%_50%]"
+		>
+			<div
+				class="w-full h-full bg-[linear-gradient(to_right,#8E7AB5_2px,transparent_2px),linear-gradient(to_bottom,#8E7AB5_2px,transparent_2px)]
+				bg-[size:75px_50px] bg-transparent transform -translate-y-10 rotate-x-[45deg]"
+			>
+			</div>
 		</div>
 		<div
-			data-aos="slide-right"
-			data-aos-duration={1000}
-			data-aos-easing="ease-in-out"
-			data-aos-delay={750}
-			data-aos-once="true"
-			class={
-				`absolute top-1/4 left-0 font-nk57 text-[25vh] text-[#121212] w-screen h-[25vh]
-				flex items-center justify-center !pointer-events-none`
-			}
-		>
-			TESTING
+			data-aos="fade"
+			data-aos-duration={200}
+			class="absolute left-0 top-1/2 bg-[#8E7AB5] border-2 border-[#8E7AB5] border-dashed w-screen h-[1000px] rounded-t-[1000px] !pointer-events-none">
 		</div>
 	{/if}
-<!--	<div class="absolute -z-10 left-0 top-1/4 border-2 border-white border-dashed w-screen h-[1000px] rounded-t-[1000px]">-->
-<!--	</div>-->
+
+	<BlueHover
+		hoveredIndex={hoveredIndex}
+	/>
 
 	<!--Sign-->
 	<Signature
