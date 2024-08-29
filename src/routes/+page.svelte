@@ -1,21 +1,21 @@
-<script lang="ts">
-	import sign from "$lib/assets/sign-min.png";
-	import { shapes, colors } from '$lib/constants/shapes';
-	import AOS from "aos";
+<script lang='ts'>
+	import { shapes, colors, baseColors } from '$lib/constants/shapes';
+	import AOS from 'aos';
+	import Signature from '$lib/components/home/Signature.svelte';
 	import { onMount } from 'svelte';
 
 	onMount(() => {
 		AOS.init();
 	});
 
-	let hoveredIndex = 0;
+	let hoveredIndex: number = -1;
 
-	function handleMouseEnter(index) {
-		hoveredIndex = index + 1;
+	function handleMouseEnter(index: number) {
+		hoveredIndex = index;
 	}
 
 	function handleMouseLeave() {
-		hoveredIndex = 0; // Reset on mouse leave
+		hoveredIndex = -1;
 	}
 </script>
 
@@ -27,12 +27,15 @@
 	<div class="w-full h-full flex items-center justify-center">
 		<div class="grid grid-cols-3 place-items-center place-content-center">
 			{#each shapes as shape, i}
-<!--				href={shape.href}-->
 				<a
 					href="/"
 					on:mouseenter={() => handleMouseEnter(i)}
 					on:mouseleave={handleMouseLeave}
-					class="transition ease-in-out duration-200 hover:scale-110"
+					class={
+						`col-span-1 cursor-pointer
+						transition ease-in-out duration-200
+						${hoveredIndex === -1 ? 'm-4' : shapes[hoveredIndex].transitions[i]}`
+					}
 				>
 					<div
 						data-aos={shape.direction}
@@ -41,9 +44,10 @@
 						data-aos-easing="ease-in-out"
 					>
 						<div
-							class="h-64 w-64 col-span-1 m-4 rounded-xl cursor-pointer
-							transition-colors ease-in-out duration-8000"
-							style="background-color: {colors[hoveredIndex][i]}"
+							class={
+								`h-64 w-64 rounded-xl transition-colors ease-in-out duration-8000
+								${hoveredIndex === -1 ? baseColors[i] : colors[hoveredIndex].alt} ${colors[i].main}`
+							}
 						>
 						</div>
 					</div>
@@ -53,17 +57,7 @@
 	</div>
 
 	<!--Sign-->
-	<div class="absolute bottom-0 right-0 w-52">
-		<img
-			data-aos="fade"
-			data-aos-delay={1200}
-			data-aos-duration={750}
-			src={sign}
-			alt="Signature"
-			class="object-fill pb-4 pr-4"
-		/>
-<!--		<div class="absolute text-right bottom-0 right-0 pb-4 pr-6 font-aston text-gray-200 text-xs">-->
-<!--			Easton K.-->
-<!--		</div>-->
-	</div>
+	<Signature
+		hoveredIndex={hoveredIndex}
+	/>
 </div>
