@@ -6,6 +6,7 @@ export default {
       fontFamily: {
         'aston': ['"Aston"', 'sans-serif'],
         'inter': ['"Inter"', 'sans-serif'],
+        'nk57': ['"NK57"', 'sans-serif'],
       },
     },
   },

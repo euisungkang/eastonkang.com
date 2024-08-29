@@ -19,7 +19,8 @@ const baseColors = [
 
 const colors = [
 	{
-		main: 'hover:bg-[#5F82E0]',
+		// main: 'hover:bg-[#5F82E0]',
+		main: 'bg-[#8EA7E9]',
 		alt: '[&:not(:hover)]:bg-[#8EA7E9]',
 	},
 	{
@@ -50,12 +51,14 @@ const shapes = [
 		direction: 'fade-down-right',
 		delay: 0,
 		transitions: [
-			'mx-4 mb-8',
-			'translate-x-[calc(150%+2rem)] scale-x-[.01]',
-			'translate-x-[calc(50%)] translate-y-[100%] scale-x-[.01]',
-			'invisible',
-			'invisible',
-			'invisible',
+			'scale-x-[1000%] translate-y-[1rem]',
+			// 'translate-x-[-200%] translate-y-[175%] scale-y-[0.025]',
+			'translate-y-[175%] scale-y-[0.025]',
+			// 'translate-y-[175%] scale-y-[0.025]',
+			'translate-y-[175%] scale-y-[0.025]',
+			'translate-y-[75%] scale-y-[0.025]',
+			'translate-x-[-200%] translate-y-[75%] scale-y-[0.025]',
+			'translate-x-[100%] translate-y-[75%] scale-y-[0.025]',
 		],
 	},
 	{
@@ -64,7 +67,7 @@ const shapes = [
 		delay: 100,
 		transitions: [
 			'',
-			'hover:scale-110',
+			'',
 			'',
 			'',
 			'',
@@ -78,7 +81,7 @@ const shapes = [
 		transitions: [
 			'',
 			'',
-			'hover:scale-110',
+			'',
 			'',
 			'',
 			'',
@@ -92,7 +95,7 @@ const shapes = [
 			'',
 			'',
 			'',
-			'hover:scale-110',
+			'',
 			'',
 			'',
 		],
@@ -106,7 +109,7 @@ const shapes = [
 			'',
 			'',
 			'',
-			'hover:scale-110',
+			'',
 			'',
 		],
 	},
@@ -120,7 +123,7 @@ const shapes = [
 			'',
 			'',
 			'',
-			'hover:scale-110',
+			'',
 		],
 	},
 ];
