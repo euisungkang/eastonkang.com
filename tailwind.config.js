@@ -8,6 +8,10 @@ export default {
         'inter': ['"Inter"', 'sans-serif'],
         'nk57': ['"NK57"', 'sans-serif'],
       },
+      transitionProperty: {
+        'width': 'width',
+        'height': 'height',
+      },
     },
   },
   plugins: [

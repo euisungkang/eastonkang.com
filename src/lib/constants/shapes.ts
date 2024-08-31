@@ -1,13 +1,12 @@
-/*
-[
-'#8EA7E9',
-'#7e9d91',
-'#A4907C',
-'#51565E',
-'#8E7AB5',
-'#E1AFD1',
-],
- */
+const timeout = [
+	750,
+	0,
+	0,
+	0,
+	1000,
+	0
+];
+
 const baseColors = [
  'bg-[#8EA7E9]',
  'bg-[#CCE8DB]',
@@ -19,7 +18,6 @@ const baseColors = [
 
 const colors = [
 	{
-		// main: 'hover:bg-[#5F82E0]',
 		main: 'bg-[#8EA7E9]',
 		alt: '[&:not(:hover)]:bg-[#8EA7E9]',
 	},
@@ -37,7 +35,7 @@ const colors = [
 	},
 	{
 		main: 'bg-[#8E7AB5]',
-		alt: '[&:not(:hover)]:bg-[#8E7AB5]',
+		alt: '[&:not(:hover)]:bg-transparent',
 	},
 	{
 		main: 'hover:bg-[#F699B8]',
@@ -52,13 +50,11 @@ const shapes = [
 		delay: 0,
 		transitions: [
 			'scale-x-[1000%] translate-y-[1rem]',
-			// 'translate-x-[-200%] translate-y-[175%] scale-y-[0.025]',
-			'translate-y-[175%] scale-y-[0.025]',
-			// 'translate-y-[175%] scale-y-[0.025]',
-			'translate-y-[175%] scale-y-[0.025]',
+			'translate-y-[calc(175%+2rem)] scale-y-[0.025]',
+			'translate-y-[calc(175%+2rem)] scale-y-[0.025]',
 			'translate-y-[75%] scale-y-[0.025]',
-			'translate-x-[-200%] translate-y-[75%] scale-y-[0.025]',
-			'translate-x-[100%] translate-y-[75%] scale-y-[0.025]',
+			'translate-x-[-225%] translate-y-[75%] scale-y-[0.025]',
+			'translate-x-[calc(100%+2rem)] translate-y-[75%] scale-y-[0.025]',
 		],
 	},
 	{
@@ -106,11 +102,11 @@ const shapes = [
 		delay: 400,
 		transitions: [
 			'invisible',
+			'translate-y-[-2.5%] scale-x-[715%] scale-y-[.25] z-10 bg-gradient-to-r from-[#F8B3CA] via-[#8E7AB5] to-[#F8B3CA]',
 			'invisible',
-			'invisible',
-			'invisible',
-			'',
-			'invisible',
+			'translate-x-[-125%] translate-y-[-52.5%] scale-x-[.25] scale-y-[400%] z-10 bg-gradient-to-t from-[#8E7AB5] to-[#F8B3CA] border-r-0 border-white',
+			'translate-y-[37.5%] bg-[#8E7AB5] w-screen !h-[1000px] overflow-hidden rounded-t-[1000px]',
+			'translate-x-[125%] translate-y-[-52.5%] scale-x-[.25] scale-y-[400%] z-10 bg-gradient-to-t from-[#8E7AB5] to-[#F8B3CA] border-r-0 border-white',
 		],
 	},
 	{
@@ -128,4 +124,15 @@ const shapes = [
 	},
 ];
 
-export { shapes, colors, baseColors };
+export { timeout, shapes, colors, baseColors };
+
+/*
+[
+'#8EA7E9',
+'#7e9d91',
+'#A4907C',
+'#51565E',
+'#8E7AB5',
+'#E1AFD1',
+],
+ */
