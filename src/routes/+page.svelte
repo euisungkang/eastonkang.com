@@ -6,6 +6,8 @@
 	import BlueHover from '$lib/components/home/hover/BlueHover.svelte';
 	import PurpleHover from '$lib/components/home/hover/PurpleHover.svelte';
 
+  // import aoscss from '$lib/constants/aos.css';
+
 	let hoveredIndex: number = -1;
 	let handleMouseEnter = (index: number) => {
 		if (!animationActive) {
@@ -24,7 +26,7 @@
 		animationActive = true;
 		setTimeout(() => {
 			animationActive = false;
-		}, timeout);
+		}, timeout);  
 	};
 
 	function handleMouseLeave() {
@@ -34,6 +36,7 @@
 
 <svelte:head>
 	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!-- <link rel="stylesheet" href="${aoscss}" /> -->
 </svelte:head>
 
 <div class="dark h-screen w-screen flex items-center justify-center bg-[#121212]">

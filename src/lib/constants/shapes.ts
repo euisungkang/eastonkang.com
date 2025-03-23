@@ -3,7 +3,7 @@ const timeout = [
 	0,
 	0,
 	0,
-	1000,
+	2000,
 	0
 ];
 
@@ -45,7 +45,7 @@ const colors = [
 
 const shapes = [
 	{
-		href: '/wavy',
+		href: '/work',
 		direction: 'fade-down-right',
 		delay: 0,
 		transitions: [
@@ -99,14 +99,17 @@ const shapes = [
 	{
 		href: '/wavy',
 		direction: 'fade-up',
-		delay: 400,
+		delay: 300,
 		transitions: [
 			'invisible',
-			'translate-y-[-2.5%] scale-x-[715%] scale-y-[.25] z-10 bg-gradient-to-r from-[#F8B3CA] via-[#8E7AB5] to-[#F8B3CA]',
 			'invisible',
-			'translate-x-[-125%] translate-y-[-52.5%] scale-x-[.25] scale-y-[400%] z-10 bg-gradient-to-t from-[#8E7AB5] to-[#F8B3CA] border-r-0 border-white',
+			// 'translate-y-[-2.5%] scale-x-[715%] scale-y-[.25] z-10 bg-gradient-to-r from-[#F8B3CA] via-[#8E7AB5] to-[#F8B3CA]',
+			'invisible',
+			'invisible',
+			// 'translate-x-[-125%] translate-y-[-52.5%] scale-x-[.25] scale-y-[400%] z-10 bg-gradient-to-t from-[#8E7AB5] to-[#F8B3CA] border-r-0 border-white',
 			'translate-y-[37.5%] bg-[#8E7AB5] w-screen !h-[1000px] overflow-hidden rounded-t-[1000px]',
-			'translate-x-[125%] translate-y-[-52.5%] scale-x-[.25] scale-y-[400%] z-10 bg-gradient-to-t from-[#8E7AB5] to-[#F8B3CA] border-r-0 border-white',
+			// 'translate-x-[125%] translate-y-[-52.5%] scale-x-[.25] scale-y-[400%] z-10 bg-gradient-to-t from-[#8E7AB5] to-[#F8B3CA] border-r-0 border-white',
+			'invisible',
 		],
 	},
 	{
