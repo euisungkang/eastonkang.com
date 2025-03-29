@@ -4,9 +4,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'aston': ['"Aston"', 'sans-serif'],
-        'inter': ['"Inter"', 'sans-serif'],
-        'nk57': ['"NK57"', 'sans-serif'],
+        'aston': ['"Aston"'],
+        'inter': ['"Inter"'],
+        'nk57': ['"NK57"'],
+        'tny': ['"TNY"'],
       },
       transitionProperty: {
         'width': 'width',

@@ -8,7 +8,7 @@
 
   // import aoscss from '$lib/constants/aos.css';
 
-	let hoveredIndex: number = -1;
+	let hoveredIndex: number = $state(-1);
 	let handleMouseEnter = (index: number) => {
 		if (!animationActive) {
 			hoveredIndex = index;
@@ -59,10 +59,10 @@
 						class="w-full h-full"
 					>
 						<div
-							on:mouseenter={() => handleMouseEnter(i)}
-							on:focus={() => {}}
-							on:mouseout={handleMouseLeave}
-							on:blur={() => {}}
+							onmouseenter={() => handleMouseEnter(i)}
+							onfocus={() => {}}
+							onmouseout={handleMouseLeave}
+							onblur={() => {}}
 							role="none"
 							class={
 								`h-full w-full rounded-xl -z-10 transition-colors cursor-pointer ease-in-out duration-200

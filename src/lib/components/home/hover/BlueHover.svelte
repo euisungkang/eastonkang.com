@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let hoveredIndex: number;
+	interface Props {
+		hoveredIndex: number;
+	}
+
+	let { hoveredIndex }: Props = $props();
 </script>
 
 {#if hoveredIndex === 0}

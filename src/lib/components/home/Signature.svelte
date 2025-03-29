@@ -2,7 +2,11 @@
 	import sign from '$lib/assets/sign-min.png';
 	import { fade } from 'svelte/transition';
 
-	export let hoveredIndex: number;
+	interface Props {
+		hoveredIndex: number;
+	}
+
+	let { hoveredIndex }: Props = $props();
 </script>
 
 <div
