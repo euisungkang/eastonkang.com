@@ -23,6 +23,6 @@
 <!--	<div-->
 <!--		data-aos="fade"-->
 <!--		data-aos-delay={500}-->
-<!--		class="absolute left-0 top-1/2 bg-[#8E7AB5] border-2 border-[#8E7AB5] border-dashed w-screen h-[1000px] rounded-t-[1000px] !pointer-events-none">-->
+<!--		class="absolute left-0 top-1/2 bg-[#8E7AB5] border-2 border-[#8E7AB5] border-dashed w-screen h-[1000px] rounded-t-[1000px] pointer-events-none!">-->
 <!--	</div>-->
 {/if}
