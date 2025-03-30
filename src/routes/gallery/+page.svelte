@@ -1,4 +1,5 @@
 <script lang='ts'>
+  import { onMount } from 'svelte';
   import logo from '$lib/assets/media/logo.png';
   import casino from '$lib/assets/media/casino.png';
   import currency from '$lib/assets/media/currency.png';
@@ -7,6 +8,7 @@
   import raffle from '$lib/assets/media/raffle.png';
   import market from '$lib/assets/media/market.png';
   import Overlay from '$lib/components/Overlay.svelte';
+	import AOS from 'aos';
 
   const images = [logo, casino, currency, receipt, market, music, raffle];
   
@@ -55,11 +57,18 @@
     gap = '1%';
   }
 
+  onMount(() => {
+    AOS.init();
+  });
+
   $effect(() => {
-    console.log(grayscaleIndex, selectedIndex, percentage);
+    // console.log(grayscaleIndex, selectedIndex, percentage);
   })
 </script>
 
+<svelte:head>
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</svelte:head>
 <svelte:window bind:innerWidth />
 
 <div 
@@ -73,7 +82,13 @@
   onmousemove={(e) => mouseMove(e)}
 >
   <Overlay />
-  <div class="h-full w-full relative">
+  <div 
+    class="h-full w-full relative"
+    data-aos='fade-left'
+    data-aos-duration={1000}
+    data-aos-easing='ease-in-out'
+    data-aos-once='true'
+  >
     <div
       class="flex absolute top-[50%] w-full items-center justify-start
              transition-transform duration-1000 ease-out"
@@ -90,7 +105,7 @@
           style:opacity="{i == grayscaleIndex ? 100 : 50}%"
           style:margin-left="{i != 0 ? gap : '0%'}"
           style:width="{i == selectedIndex ? '50vw' : '14vw'}"
-          style:height="{i == selectedIndex ? '50vh' : '50vh'}"
+          style:height="{i == selectedIndex ? '50vh' : '40vh'}"
           alt="Test"
           draggable={false}
         />
