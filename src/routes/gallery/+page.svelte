@@ -6,6 +6,7 @@
   import music from '$lib/assets/media/music.png';
   import raffle from '$lib/assets/media/raffle.png';
   import market from '$lib/assets/media/market.png';
+  import Overlay from '$lib/components/Overlay.svelte';
 
   const images = [logo, casino, currency, receipt, market, music, raffle];
   
@@ -71,6 +72,7 @@
   onmouseup={() => mouseUpAt()}
   onmousemove={(e) => mouseMove(e)}
 >
+  <Overlay />
   <div class="h-full w-full relative">
     <div
       class="flex absolute top-[50%] w-full items-center justify-start
