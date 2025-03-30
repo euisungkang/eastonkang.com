@@ -17,7 +17,7 @@ export default {
   },
   plugins: [
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    require("@xpd/tailwind-3dtransforms")
+    require('@tailwindcss/typography')
   ],
 }
 
