@@ -1,11 +1,11 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import Logo from '$lib/components/overlay/Logo.svelte';
-  import Socials from '$lib/components/overlay/Socials.svelte';
-	import Description from '$lib/components/overlay/Description.svelte';
-	import Links from '$lib/components/overlay/Links.svelte';
-	import Crosshairs from '$lib/components/overlay/Crosshairs.svelte';
-  // import Frame from '$lib/components/overlay/Frame.svelte';
+  import Logo from './Logo.svelte';
+	import Description from './Description.svelte';
+	import Crosshairs from './Crosshairs.svelte';
+  // import Socials from './Socials.svelte';
+	// import Links from './Links.svelte';
+  // import Frame from './Frame.svelte';
 
   type Props = {
     overlayColor: string,
@@ -15,7 +15,6 @@
     overlayColor,
   }: Props = $props();
 
-  // let overlayColor: string = $state('#FFFFFF');
   let load: boolean = $state(false);
 
   onMount(() => {

@@ -17,7 +17,11 @@ export const images: Array<Image> = [
   { image: casino, backgroundColor: '#4850a4', overlayColor: '#f7a4f6' },
   { image: currency, backgroundColor: '#4850a4', overlayColor: '#f7a4f6' },
   { image: receipt, backgroundColor: '#4850a4', overlayColor: '#f7a4f6' },
-  { image: music, backgroundColor: '#4850a4', overlayColor: '#f7a4f6' },
+  { 
+    image: 'https://ik.imagekit.io/easton/home-bg.svg',
+    backgroundColor: '#095afd',
+    overlayColor: '#e6e6e6' 
+  },
   { image: raffle, backgroundColor: '#4850a4', overlayColor: '#f7a4f6' },
   { image: market, backgroundColor: '#4850a4', overlayColor: '#f7a4f6' },
 ];

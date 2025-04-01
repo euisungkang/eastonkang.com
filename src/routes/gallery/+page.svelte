@@ -2,8 +2,6 @@
   import Overlay from '$lib/components/overlay/Overlay.svelte';
   import { images } from '$lib/constants/images';
 
-  // const images = [logo, casino, currency, receipt, market, music, raffle];
-  
   let gap: string = $state('1%');
   let selectedIndex: number = $state(-1);
   let grayscaleIndex: number = $state(0);
