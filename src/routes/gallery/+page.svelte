@@ -1,6 +1,9 @@
 <script lang='ts'>
-  import Overlay from '$lib/components/overlay/Overlay.svelte';
+  import { onMount} from 'svelte';
+  import { fly } from 'svelte/transition';
   import { images } from '$lib/constants/images';
+  import Overlay from '$lib/components/overlay/Overlay.svelte';
+	import { sineOut } from 'svelte/easing';
 
   let gap: string = $state('1%');
   let selectedIndex: number = $state(-1);
@@ -13,6 +16,7 @@
 
   let backgroundColor: string = $state('#121212');
   let overlayColor: string = $state('#adb5ad');
+  let trackVisible: boolean = $state(false);
 
   function expandImage(i: number) {
     // (-14 (def vw) - 7 (post-ml)) * i + (25 (half of expanded))
@@ -57,6 +61,10 @@
     overlayColor = '#adb5ad';
   }
 
+  onMount(() => {
+    trackVisible = true;
+  });
+
   // $effect(() => {
     // console.log(grayscaleIndex, selectedIndex, percentage);
   // })
@@ -86,20 +94,24 @@
       style:transform="translate({percentage}%, -50%)"
     >
       {#each images as img, i}
-        <img 
-          src={img.image}
-          onclick={() => expandImage(i)}
-          class="object-cover object-center select-none
-                 transition-all duration-1000 ease-out"
-          style:object-position="{imagePercentage}% center"
-          style:filter="grayscale({i == grayscaleIndex ? 0 : 100}%)"
-          style:opacity="{i == grayscaleIndex ? 100 : 50}%"
-          style:margin-left="{i != 0 ? gap : '0%'}"
-          style:width="{i == selectedIndex ? '50vw' : '14vw'}"
-          style:height="{i == selectedIndex ? '50vh' : '50vh'}"
-          alt="Test"
-          draggable={false}
-        />
+        {#if trackVisible}
+          <!-- svelte-ignore a11y_no_noninteractive_element_interactions-->
+          <!-- svelte-ignore a11y_click_events_have_key_events-->
+          <img 
+            src={img.image}
+            class="object-cover object-center select-none h-[50vh]
+                   transition-[object-position,width,filter,opacity,margin-left] duration-1000 ease-out"
+            onclick={() => expandImage(i)}
+            in:fly={{ x: '50vw', duration: 1000 + (50 * i), easing: sineOut, delay: 100 * i }}
+            style:object-position="{imagePercentage}% center"
+            style:filter="grayscale({i == grayscaleIndex ? 0 : 100}%)"
+            style:opacity="{i == grayscaleIndex ? 100 : 50}%"
+            style:margin-left="{i != 0 ? gap : '0%'}"
+            style:width="{i == selectedIndex ? '50vw' : '14vw'}"
+            alt="Test"
+            draggable={false}
+          />
+        {/if}
       {/each}
     </div>
   </div>
