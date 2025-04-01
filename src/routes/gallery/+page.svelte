@@ -1,32 +1,28 @@
 <script lang='ts'>
-  import { onMount } from 'svelte';
-  import logo from '$lib/assets/media/logo.png';
-  import casino from '$lib/assets/media/casino.png';
-  import currency from '$lib/assets/media/currency.png';
-  import receipt from '$lib/assets/media/receipt.png';
-  import music from '$lib/assets/media/music.png';
-  import raffle from '$lib/assets/media/raffle.png';
-  import market from '$lib/assets/media/market.png';
-  import Overlay from '$lib/components/Overlay.svelte';
-	import AOS from 'aos';
-
-  const images = [logo, casino, currency, receipt, market, music, raffle];
+  import Overlay from '$lib/components/overlay/Overlay.svelte';
+  import { images } from '$lib/constants/images';
   
   let gap: string = $state('1%');
   let selectedIndex: number = $state(-1);
   let grayscaleIndex: number = $state(0);
   let mouseDownX: number = 0; 
-  let mouseUpX: number = 0;
+  let mouseUpX: number = 50;
   let innerWidth: number = $state(0);
   let percentage: number = $state(50);
   let imagePercentage: number = $derived(percentage / 2 + 50);
 
+  let backgroundColor: string = $state('#121212');
+  let overlayColor: string = $state('#adb5ad');
+
   function expandImage(i: number) {
-    // (-14 (def vw) - 10 (post-ml)) * i + (25 - 10 (first ml))
-    percentage = (-24 * i) + 25;
+    // (-14 (def vw) - 7 (post-ml)) * i + (25 (half of expanded))
+    percentage = (-21 * i) + 25;
     selectedIndex = i;
     grayscaleIndex = i;
-    gap = '10%';
+    gap = '7%';
+
+    backgroundColor = images[i].backgroundColor;
+    overlayColor = images[i].overlayColor;
   }
 
   function mouseDownAt(e: MouseEvent) {
@@ -44,26 +40,26 @@
     const mouseDelta = mouseDownX - e.clientX;
     const maxDelta = innerWidth / 2;
     const rawPercentage = (mouseDelta / maxDelta) * -100;
+    console.log(rawPercentage);
 
-    // Update percentage (track progress), grayscaleIndex (image with color)
-    percentage = Math.max(Math.min(rawPercentage + mouseUpX, 50), -50);
+    // 54 (104) = 14 * 7 + 6 (gaps 1)
+    percentage = Math.max(Math.min(rawPercentage + mouseUpX, 50), -54);
     grayscaleIndex = Math.min(
-      Math.floor(-(percentage - 50) / (100 / images.length)),
+      // 15 = 14 (width) + 1
+      Math.floor(-(percentage - 50) / 15),
       images.length - 1
     );
 
     // Reset selected image and reset gap
     selectedIndex = -1;
     gap = '1%';
+    backgroundColor = '#121212';
+    overlayColor = '#adb5ad';
   }
 
-  onMount(() => {
-    AOS.init();
-  });
-
-  $effect(() => {
+  // $effect(() => {
     // console.log(grayscaleIndex, selectedIndex, percentage);
-  })
+  // })
 </script>
 
 <svelte:head>
@@ -72,7 +68,8 @@
 <svelte:window bind:innerWidth />
 
 <div 
-  class="dark h-screen w-screen bg-[#121212] overflow-hidden"
+  class="dark h-screen w-screen overflow-hidden transition-colors duration-1000 ease-out"
+  style:background-color={backgroundColor}
   role="scrollbar"
   aria-controls="0,1"
   aria-valuenow="0"
@@ -81,22 +78,19 @@
   onmouseup={() => mouseUpAt()}
   onmousemove={(e) => mouseMove(e)}
 >
-  <Overlay />
-  <div 
-    class="h-full w-full relative"
-    data-aos='fade-left'
-    data-aos-duration={1000}
-    data-aos-easing='ease-in-out'
-    data-aos-once='true'
-  >
+  <Overlay
+    overlayColor={overlayColor}
+  />
+
+  <div class="h-full w-full relative">
     <div
       class="flex absolute top-[50%] w-full items-center justify-start
              transition-transform duration-1000 ease-out"
       style:transform="translate({percentage}%, -50%)"
     >
-      {#each images as image, i}
+      {#each images as img, i}
         <img 
-          src={image}
+          src={img.image}
           onclick={() => expandImage(i)}
           class="object-cover object-center select-none
                  transition-all duration-1000 ease-out"
