@@ -71,9 +71,6 @@
   });
 </script>
 
-<svelte:head>
-	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-</svelte:head>
 <svelte:window bind:innerWidth />
 
 <div 
