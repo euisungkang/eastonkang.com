@@ -13,7 +13,11 @@ export type Image = {
 };
 
 export const images: Array<Image> = [
-  { image: logo, backgroundColor: '#4850a4', overlayColor: '#f7a4f6' },
+  { 
+    image: logo,
+    backgroundColor: '#ffb7e1',
+    overlayColor: '#382a6c' 
+  },
   { image: casino, backgroundColor: '#4850a4', overlayColor: '#f7a4f6' },
   { image: currency, backgroundColor: '#4850a4', overlayColor: '#f7a4f6' },
   { image: receipt, backgroundColor: '#4850a4', overlayColor: '#f7a4f6' },

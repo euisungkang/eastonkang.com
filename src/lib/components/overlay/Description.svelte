@@ -1,9 +1,14 @@
 <script lang='ts'>
+  import TextSlideY from "../effects/TextSlideY.svelte";
+
   let { 
     overlayColor = '#FFFFFF'
   }: {
     overlayColor: string,
   } = $props();
+
+  const line1: string = 'FULLSTACK DEVELOPER';
+  const line2: string = 'INSPIRED BY ARISTIDE BENOIST';
 </script>
 
 <div
@@ -11,6 +16,13 @@
          flex flex-col items-end"
   style:color={overlayColor}
 >
-  <div>FULLSTACK DEVELOPER</div>
-  <div>INSPIRED BY ARISTIDE BENOIST</div>
+  <TextSlideY 
+    text={line1}
+    stagger={false}
+  />
+  <TextSlideY 
+    text={line2}
+    stagger={false}
+    delay={100}
+  />
 </div>

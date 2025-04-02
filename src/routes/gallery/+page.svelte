@@ -4,6 +4,7 @@
   import { images } from '$lib/constants/images';
   import Overlay from '$lib/components/overlay/Overlay.svelte';
 	import { sineOut } from 'svelte/easing';
+  import WavyOverlay from '$lib/components/gallery/WavyOverlay.svelte';
 
   let gap: string = $state('1%');
   let selectedIndex: number = $state(-1);
@@ -44,7 +45,6 @@
     const mouseDelta = mouseDownX - e.clientX;
     const maxDelta = innerWidth / 2;
     const rawPercentage = (mouseDelta / maxDelta) * -100;
-    console.log(rawPercentage);
 
     // 54 (104) = 14 * 7 + 6 (gaps 1)
     percentage = Math.max(Math.min(rawPercentage + mouseUpX, 50), -54);
@@ -62,12 +62,11 @@
   }
 
   onMount(() => {
-    trackVisible = true;
+    setTimeout(() => {
+      trackVisible = true;
+      expandImage(0);
+    }, 500);
   });
-
-  // $effect(() => {
-    // console.log(grayscaleIndex, selectedIndex, percentage);
-  // })
 </script>
 
 <svelte:window bind:innerWidth />
@@ -114,5 +113,11 @@
         {/if}
       {/each}
     </div>
+
+    {#if selectedIndex == 0}
+      <WavyOverlay
+        color={overlayColor}
+      />
+    {/if}
   </div>
 </div>

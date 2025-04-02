@@ -8,6 +8,7 @@ export default {
         'inter': ['"Inter"'],
         'nk57': ['"NK57"'],
         'tny': ['"TNY"'],
+        'jws': ['"JWS"']
       },
       transitionProperty: {
         'width': 'width',
