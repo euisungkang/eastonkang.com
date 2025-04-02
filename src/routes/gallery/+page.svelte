@@ -10,6 +10,7 @@
 	import SoaplandOverlay from '$lib/components/gallery/SoaplandOverlay.svelte';
 	import MilitaryOverlay from '$lib/components/gallery/MilitaryOverlay.svelte';
 	import V1 from '$lib/components/gallery/V1.svelte';
+	import BlindOverlay from '$lib/components/gallery/BlindOverlay.svelte';
 
   let gap: string = $state('1%');
   let selectedIndex: number = $state(-1);
@@ -69,7 +70,7 @@
   onMount(() => {
     setTimeout(() => {
       trackVisible = true;
-      // expandImage(4);
+      expandImage(5);
     }, 500);
   });
 </script>
@@ -140,11 +141,11 @@
         color={overlayColor}
       />
     {:else if selectedIndex == 5}
-      <SoaplandOverlay
+      <BlindOverlay
         color={overlayColor}
       />
     {:else if selectedIndex == 6}
-      <SpacePOverlay 
+      <SoaplandOverlay
         color={overlayColor}
       />
     {/if}
