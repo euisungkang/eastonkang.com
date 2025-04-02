@@ -1,10 +1,11 @@
 <script lang='ts'>
+  import { onMount } from 'svelte';
 	import { timeout, shapes, colors, baseColors } from '$lib/constants/shapes';
 	import AOS from 'aos';
 	import Signature from '$lib/components/home/Signature.svelte';
-	import { onMount } from 'svelte';
 	import BlueHover from '$lib/components/home/hover/BlueHover.svelte';
 	import PurpleHover from '$lib/components/home/hover/PurpleHover.svelte';
+  import { goto } from '$app/navigation';
 
   // import aoscss from '$lib/constants/aos.css';
 
@@ -32,6 +33,10 @@
 	function handleMouseLeave() {
 		hoveredIndex = -1;
 	}
+
+  onMount(() => {
+    goto('/gallery');
+  });
 </script>
 
 <svelte:head>
