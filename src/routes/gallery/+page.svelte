@@ -70,7 +70,7 @@
   onMount(() => {
     setTimeout(() => {
       trackVisible = true;
-      expandImage(5);
+      // expandImage(5);
     }, 500);
   });
 </script>
