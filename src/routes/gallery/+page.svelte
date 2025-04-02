@@ -1,7 +1,13 @@
 <script lang='ts'>
-  import Overlay from '$lib/components/overlay/Overlay.svelte';
+  import { onMount} from 'svelte';
+  import { fly } from 'svelte/transition';
   import { images } from '$lib/constants/images';
-  
+  import Overlay from '$lib/components/overlay/Overlay.svelte';
+	import { sineOut } from 'svelte/easing';
+  import WavyOverlay from '$lib/components/gallery/WavyOverlay.svelte';
+  import SpacePOverlay from '$lib/components/gallery/SpacePOverlay.svelte';
+	import EricKoOverlay from '$lib/components/gallery/EricKoOverlay.svelte';
+
   let gap: string = $state('1%');
   let selectedIndex: number = $state(-1);
   let grayscaleIndex: number = $state(0);
@@ -13,6 +19,7 @@
 
   let backgroundColor: string = $state('#121212');
   let overlayColor: string = $state('#adb5ad');
+  let trackVisible: boolean = $state(false);
 
   function expandImage(i: number) {
     // (-14 (def vw) - 7 (post-ml)) * i + (25 (half of expanded))
@@ -40,7 +47,6 @@
     const mouseDelta = mouseDownX - e.clientX;
     const maxDelta = innerWidth / 2;
     const rawPercentage = (mouseDelta / maxDelta) * -100;
-    console.log(rawPercentage);
 
     // 54 (104) = 14 * 7 + 6 (gaps 1)
     percentage = Math.max(Math.min(rawPercentage + mouseUpX, 50), -54);
@@ -57,9 +63,12 @@
     overlayColor = '#adb5ad';
   }
 
-  // $effect(() => {
-    // console.log(grayscaleIndex, selectedIndex, percentage);
-  // })
+  onMount(() => {
+    setTimeout(() => {
+      trackVisible = true;
+      // expandImage(1);
+    }, 500);
+  });
 </script>
 
 <svelte:head>
@@ -89,21 +98,39 @@
       style:transform="translate({percentage}%, -50%)"
     >
       {#each images as img, i}
-        <img 
-          src={img.image}
-          onclick={() => expandImage(i)}
-          class="object-cover object-center select-none
-                 transition-all duration-1000 ease-out"
-          style:object-position="{imagePercentage}% center"
-          style:filter="grayscale({i == grayscaleIndex ? 0 : 100}%)"
-          style:opacity="{i == grayscaleIndex ? 100 : 50}%"
-          style:margin-left="{i != 0 ? gap : '0%'}"
-          style:width="{i == selectedIndex ? '50vw' : '14vw'}"
-          style:height="{i == selectedIndex ? '50vh' : '40vh'}"
-          alt="Test"
-          draggable={false}
-        />
+        {#if trackVisible}
+          <!-- svelte-ignore a11y_no_noninteractive_element_interactions-->
+          <!-- svelte-ignore a11y_click_events_have_key_events-->
+          <img 
+            src={img.image}
+            class="object-cover object-center select-none h-[50vh]
+                   transition-[object-position,width,filter,opacity,margin-left] duration-1000 ease-out"
+            onclick={() => expandImage(i)}
+            in:fly={{ x: '50vw', duration: 1000 + (50 * i), easing: sineOut, delay: 100 * i }}
+            style:object-position="{imagePercentage}% center"
+            style:filter="grayscale({i == grayscaleIndex ? 0 : 100}%)"
+            style:opacity="{i == grayscaleIndex ? 100 : 50}%"
+            style:margin-left="{i != 0 ? gap : '0%'}"
+            style:width="{i == selectedIndex ? '50vw' : '14vw'}"
+            alt="Test"
+            draggable={false}
+          />
+        {/if}
       {/each}
     </div>
+
+    {#if selectedIndex == 0}
+      <WavyOverlay
+        color={overlayColor}
+      />
+    {:else if selectedIndex == 1}
+      <EricKoOverlay
+        color={overlayColor}
+      />
+    {:else if selectedIndex == 2}
+      <SpacePOverlay 
+        color={overlayColor}
+      />
+    {/if}
   </div>
 </div>

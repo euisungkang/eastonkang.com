@@ -1,0 +1,50 @@
+<script lang='ts'>
+	import { onMount } from "svelte";
+  import LetterSlide from "../effects/LetterSlide.svelte";
+	import DetailOverlay from "./DetailOverlay.svelte";
+
+  let {
+    color,
+  }: {
+    color: string,
+  } = $props();
+
+  let visible: boolean = $state(false);
+  const leftFields: Array<string> = [
+    'ONGOING', 
+    'PORTFOLIO',
+    'FULL-STACK DEV & MOTION',
+    'ERIC KO',
+  ];
+  const rightFields: Array<string> = [
+    'PORTFOLIO OF ERIC KO, CREATIVE',
+    'AND PHOTOGRAPHER AND DESIGNER',
+  ];
+
+  onMount(() => {
+    visible = true;
+  });
+</script>
+
+{#if visible}
+  <!-- Letters -->
+  <div 
+    class="relative w-full h-full font-tny text-[20vw] pointer-events-none"
+    style:color={color}
+  >
+    <div class="absolute top-[10%] left-[15%]"><LetterSlide letter='E' /></div>
+    <div class="absolute top-[10%] left-[20%]"><LetterSlide letter='R' /></div>
+    <div class="absolute top-[10%] left-[30%]"><LetterSlide letter='I' /></div>
+    <div class="absolute top-[10%] left-[40%]"><LetterSlide letter='C' /></div>
+    <div class="absolute top-[50%] left-[65%]"><LetterSlide letter='K' /></div>
+    <div class="absolute top-[50%] left-[75%]"><LetterSlide letter='O' /></div>
+  </div>
+
+  <!-- Bottom Overlay -->
+  <DetailOverlay 
+    color={color}
+    leftFields={leftFields}
+    rightFields={rightFields}
+  />
+{/if}
+

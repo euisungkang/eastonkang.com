@@ -37,8 +37,7 @@
   }
   @font-face {
     font-family: 'NK57';
-    src: url('/fonts/nk57/NK57 Monospace Se Bk.otf')
-      format('truetype-collection');
+    src: url('/fonts/nk57/NK57 Monospace Se Bk.otf') format('truetype-collection');
     font-weight: normal;
     font-style: normal;
   }
