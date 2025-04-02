@@ -12,13 +12,13 @@
   let visible: boolean = $state(false);
   const leftFields: Array<string> = [
     'ONGOING', 
-    'PASSION',
-    'FULL-STACK DEV & CREATIVE DESIGN',
-    'WAVY SUITE',
+    'PORTFOLIO',
+    'FULL-STACK DEV & MOTION',
+    'ERIC KO',
   ];
   const rightFields: Array<string> = [
-    'USER SATISFACTION AND CONVENIENCE',
-    'PLATFORM FOR COMMUNITY CREATORS',
+    'PORTFOLIO OF ERIC KO, CREATIVE',
+    'AND PHOTOGRAPHER AND DESIGNER',
   ];
 
   onMount(() => {
@@ -32,10 +32,12 @@
     class="relative w-full h-full font-tny text-[20vw] pointer-events-none"
     style:color={color}
   >
-    <div class="absolute top-[10%] left-[20%]"><LetterSlide letter='W' /></div>
-    <div class="absolute top-[10%] left-[35%]"><LetterSlide letter='A' /></div>
-    <div class="absolute top-[50%] left-[55%]"><LetterSlide letter='V' /></div>
-    <div class="absolute top-[50%] left-[70%]"><LetterSlide letter='Y' /></div>
+    <div class="absolute top-[10%] left-[15%]"><LetterSlide letter='E' /></div>
+    <div class="absolute top-[10%] left-[20%]"><LetterSlide letter='R' /></div>
+    <div class="absolute top-[10%] left-[30%]"><LetterSlide letter='I' /></div>
+    <div class="absolute top-[10%] left-[40%]"><LetterSlide letter='C' /></div>
+    <div class="absolute top-[50%] left-[65%]"><LetterSlide letter='K' /></div>
+    <div class="absolute top-[50%] left-[75%]"><LetterSlide letter='O' /></div>
   </div>
 
   <!-- Bottom Overlay -->

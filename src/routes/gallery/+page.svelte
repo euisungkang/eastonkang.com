@@ -5,6 +5,8 @@
   import Overlay from '$lib/components/overlay/Overlay.svelte';
 	import { sineOut } from 'svelte/easing';
   import WavyOverlay from '$lib/components/gallery/WavyOverlay.svelte';
+  import SpacePOverlay from '$lib/components/gallery/SpacePOverlay.svelte';
+	import EricKoOverlay from '$lib/components/gallery/EricKoOverlay.svelte';
 
   let gap: string = $state('1%');
   let selectedIndex: number = $state(-1);
@@ -64,7 +66,7 @@
   onMount(() => {
     setTimeout(() => {
       trackVisible = true;
-      expandImage(0);
+      // expandImage(1);
     }, 500);
   });
 </script>
@@ -116,6 +118,14 @@
 
     {#if selectedIndex == 0}
       <WavyOverlay
+        color={overlayColor}
+      />
+    {:else if selectedIndex == 1}
+      <EricKoOverlay
+        color={overlayColor}
+      />
+    {:else if selectedIndex == 2}
+      <SpacePOverlay 
         color={overlayColor}
       />
     {/if}
