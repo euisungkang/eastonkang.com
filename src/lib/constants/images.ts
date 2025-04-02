@@ -1,12 +1,11 @@
 import logo from '$lib/assets/media/logo.png';
-import casino from '$lib/assets/media/casino.png';
-import currency from '$lib/assets/media/currency.png';
-import receipt from '$lib/assets/media/receipt.png';
-import music from '$lib/assets/media/music.png';
+import soap from '$lib/assets/media/soap.jpg';
 import spacep from '$lib/assets/media/space.png';
-import raffle from '$lib/assets/media/raffle.png';
+import mine from '$lib/assets/media/mine.png';
 import market from '$lib/assets/media/market.png';
 import ericko from '$lib/assets/media/ericko.png';
+import jumpkey from '$lib/assets/media/jumpkey.png';
+import v1 from '$lib/assets/media/v1.png';
 
 export type Image = {
   image: string,
@@ -22,16 +21,32 @@ export const images: Array<Image> = [
   },
   { 
     image: ericko,
-    backgroundColor: '#d5d5d5',
-    overlayColor: '#2a2a2a' 
+    backgroundColor: '#bebebe',
+    overlayColor: '#1e1e1e' 
   },
   { 
     image: spacep,
     backgroundColor: '#010919',
     overlayColor: '#e6e6e6' 
   },
-  { image: currency, backgroundColor: '#4850a4', overlayColor: '#f7a4f6' },
-  { image: receipt, backgroundColor: '#4850a4', overlayColor: '#f7a4f6' },
-  { image: raffle, backgroundColor: '#4850a4', overlayColor: '#f7a4f6' },
-  { image: market, backgroundColor: '#4850a4', overlayColor: '#f7a4f6' },
+  { 
+    image: mine,
+    backgroundColor: '#d5d5d5',
+    overlayColor: '#2a2a2a' 
+  },
+  {
+    image: v1,
+    backgroundColor: '#121212',
+    overlayColor: '#f0f0f0' 
+  },
+  { 
+    image: soap,
+    backgroundColor: '#b1beac',
+    overlayColor: '#2f2524' 
+  },
+  {
+    image: jumpkey,
+    backgroundColor: '#121212',
+    overlayColor: '#f0f0f0' 
+  },
 ];

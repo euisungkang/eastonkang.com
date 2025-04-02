@@ -7,6 +7,9 @@
   import WavyOverlay from '$lib/components/gallery/WavyOverlay.svelte';
   import SpacePOverlay from '$lib/components/gallery/SpacePOverlay.svelte';
 	import EricKoOverlay from '$lib/components/gallery/EricKoOverlay.svelte';
+	import SoaplandOverlay from '$lib/components/gallery/SoaplandOverlay.svelte';
+	import MilitaryOverlay from '$lib/components/gallery/MilitaryOverlay.svelte';
+	import V1 from '$lib/components/gallery/V1.svelte';
 
   let gap: string = $state('1%');
   let selectedIndex: number = $state(-1);
@@ -66,7 +69,7 @@
   onMount(() => {
     setTimeout(() => {
       trackVisible = true;
-      // expandImage(1);
+      // expandImage(4);
     }, 500);
   });
 </script>
@@ -125,6 +128,22 @@
         color={overlayColor}
       />
     {:else if selectedIndex == 2}
+      <SpacePOverlay 
+        color={overlayColor}
+      />
+    {:else if selectedIndex == 3}
+      <MilitaryOverlay
+        color={overlayColor}
+      />
+    {:else if selectedIndex == 4}
+      <V1
+        color={overlayColor}
+      />
+    {:else if selectedIndex == 5}
+      <SoaplandOverlay
+        color={overlayColor}
+      />
+    {:else if selectedIndex == 6}
       <SpacePOverlay 
         color={overlayColor}
       />

@@ -47,7 +47,7 @@
     <!-- Periods -->
     <div class="absolute w-[5vw] h-[5vw] top-[55%] left-[35%] flex items-center justify-center">
       <div 
-        class="transition-[width,height] duration-750 delay-700 ease-out rounded-full"
+        class="transition-[width,height] duration-500 delay-700 ease-out rounded-full"
         style:width={ballSize}
         style:height={ballSize}
         style:background-color={color}
@@ -55,7 +55,7 @@
     </div>
     <div class="absolute w-[5vw] h-[5vw] top-[69%] left-[35%] flex items-center justify-center">
       <div 
-        class="transition-[width,height] duration-750 delay-800 ease-out rounded-full"
+        class="transition-[width,height] duration-500 delay-800 ease-out rounded-full"
         style:width={ballSize}
         style:height={ballSize}
         style:background-color={color}
