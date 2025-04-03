@@ -5,8 +5,10 @@
 
   let {
     letter,
+    reverse,
   }: {
     letter: string,
+    reverse: boolean,
   } = $props();
 
   let visible: boolean = $state(false);
@@ -18,7 +20,7 @@
 
 {#if visible}
   <div class="w-40 h-80 flex items-center justify-center overflow-hidden">
-    <div in:fly={{ x: -150, easing: sineOut, duration: 1000, opacity: 1 }}>
+    <div in:fly={{ x: reverse ? 150 : -150, easing: sineOut, duration: 1000, opacity: 1 }}>
       {letter}
     </div>
   </div>

@@ -5,9 +5,9 @@
   import Overlay from '$lib/components/overlay/Overlay.svelte';
 	import { sineOut } from 'svelte/easing';
   import WavyOverlay from '$lib/components/gallery/WavyOverlay.svelte';
-  import SpacePOverlay from '$lib/components/gallery/SpacePOverlay.svelte';
+  import LiminaOverlay from '$lib/components/gallery/LiminaOverlay.svelte';
 	import EricKoOverlay from '$lib/components/gallery/EricKoOverlay.svelte';
-	import SoaplandOverlay from '$lib/components/gallery/SoaplandOverlay.svelte';
+	import SpacePOverlay from '$lib/components/gallery/SpacePOverlay.svelte';
 	import MilitaryOverlay from '$lib/components/gallery/MilitaryOverlay.svelte';
 	import V1 from '$lib/components/gallery/V1.svelte';
 	import BlindOverlay from '$lib/components/gallery/BlindOverlay.svelte';
@@ -19,7 +19,8 @@
   let mouseUpX: number = 50;
   let innerWidth: number = $state(0);
   let percentage: number = $state(50);
-  let imagePercentage: number = $derived(percentage / 2 + 50);
+  let imagePercentage: number = $state(100);
+  let letterReverse: boolean = $state(false); // ! = left -> right
 
   let backgroundColor: string = $state('#121212');
   let overlayColor: string = $state('#adb5ad');
@@ -27,10 +28,12 @@
 
   function expandImage(i: number) {
     // (-14 (def vw) - 7 (post-ml)) * i + (25 (half of expanded))
+    letterReverse = selectedIndex != -1 && i < selectedIndex;
     percentage = (-21 * i) + 25;
     selectedIndex = i;
     grayscaleIndex = i;
     gap = '7%';
+    imagePercentage = 50;
 
     backgroundColor = images[i].backgroundColor;
     overlayColor = images[i].overlayColor;
@@ -54,6 +57,7 @@
 
     // 54 (104) = 14 * 7 + 6 (gaps 1)
     percentage = Math.max(Math.min(rawPercentage + mouseUpX, 50), -54);
+    imagePercentage = percentage / 2 + 50;
     grayscaleIndex = Math.min(
       // 15 = 14 (width) + 1
       Math.floor(-(percentage - 50) / 15),
@@ -63,6 +67,7 @@
     // Reset selected image and reset gap
     selectedIndex = -1;
     gap = '1%';
+    letterReverse = false;
     backgroundColor = '#121212';
     overlayColor = '#adb5ad';
   }
@@ -70,9 +75,13 @@
   onMount(() => {
     setTimeout(() => {
       trackVisible = true;
-      // expandImage(5);
+      // expandImage(2);
     }, 500);
   });
+
+  $effect(() => {
+    console.log(percentage, imagePercentage);
+  })
 </script>
 
 <svelte:window bind:innerWidth />
@@ -109,9 +118,9 @@
             onclick={() => expandImage(i)}
             in:fly={{ x: '50vw', duration: 1000 + (50 * i), easing: sineOut, delay: 100 * i }}
             style:object-position="{imagePercentage}% center"
+            style:margin-left="{i != 0 ? gap : '0%'}"
             style:filter="grayscale({i == grayscaleIndex ? 0 : 100}%)"
             style:opacity="{i == grayscaleIndex ? 100 : 50}%"
-            style:margin-left="{i != 0 ? gap : '0%'}"
             style:width="{i == selectedIndex ? '50vw' : '14vw'}"
             alt="Test"
             draggable={false}
@@ -123,30 +132,37 @@
     {#if selectedIndex == 0}
       <WavyOverlay
         color={overlayColor}
+        letterReverse={letterReverse}
       />
     {:else if selectedIndex == 1}
       <EricKoOverlay
         color={overlayColor}
+        letterReverse={letterReverse}
       />
     {:else if selectedIndex == 2}
-      <SpacePOverlay 
+      <LiminaOverlay
         color={overlayColor}
+        letterReverse={letterReverse}
       />
     {:else if selectedIndex == 3}
-      <MilitaryOverlay
+      <SpacePOverlay
         color={overlayColor}
+        letterReverse={letterReverse}
       />
     {:else if selectedIndex == 4}
-      <V1
+      <MilitaryOverlay
         color={overlayColor}
+        letterReverse={letterReverse}
       />
     {:else if selectedIndex == 5}
       <BlindOverlay
         color={overlayColor}
+        letterReverse={letterReverse}
       />
     {:else if selectedIndex == 6}
-      <SoaplandOverlay
+      <V1
         color={overlayColor}
+        letterReverse={letterReverse}
       />
     {/if}
   </div>

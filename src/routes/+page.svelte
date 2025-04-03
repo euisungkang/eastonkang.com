@@ -7,8 +7,6 @@
 	import PurpleHover from '$lib/components/home/hover/PurpleHover.svelte';
   import { goto } from '$app/navigation';
 
-  // import aoscss from '$lib/constants/aos.css';
-
 	let hoveredIndex: number = $state(-1);
 	let handleMouseEnter = (index: number) => {
 		if (!animationActive) {

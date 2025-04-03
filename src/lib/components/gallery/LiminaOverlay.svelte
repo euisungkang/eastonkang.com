@@ -13,14 +13,14 @@
 
   let visible: boolean = $state(false);
   const leftFields: Array<string> = [
-    'ONGOING', 
-    'PASSION',
-    'FULL-STACK DEV & CREATIVE DESIGN',
-    'WAVY SUITE',
+    'APRIL 2025', 
+    'FREELANCE',
+    'FULL-STACK DEV & MOTION',
+    'LIMINA',
   ];
   const rightFields: Array<string> = [
-    'USER SATISFACTION AND CONVENIENCE',
-    'PLATFORM FOR COMMUNITY CREATORS',
+    'CRAFTING BOLD, FLUID MOTION',
+    'FOR CREATIVES AND WEB DESIGNERS',
   ];
 
   onMount(() => {
@@ -34,10 +34,12 @@
     class="relative w-full h-full font-tny text-[20vw] pointer-events-none"
     style:color={color}
   >
-    <div class="absolute top-[10%] left-[20%]"><LetterSlide reverse={letterReverse} letter='W' /></div>
-    <div class="absolute top-[10%] left-[35%]"><LetterSlide reverse={letterReverse} letter='A' /></div>
-    <div class="absolute top-[50%] left-[55%]"><LetterSlide reverse={letterReverse} letter='V' /></div>
-    <div class="absolute top-[50%] left-[70%]"><LetterSlide reverse={letterReverse} letter='Y' /></div>
+    <div class="absolute top-[10%] left-[15%]"><LetterSlide reverse={letterReverse} letter='L' /></div>
+    <div class="absolute top-[10%] left-[25%]"><LetterSlide reverse={letterReverse} letter='I' /></div>
+    <div class="absolute top-[10%] left-[35%]"><LetterSlide reverse={letterReverse} letter='M' /></div>
+    <div class="absolute top-[50%] left-[60%]"><LetterSlide reverse={letterReverse} letter='I' /></div>
+    <div class="absolute top-[50%] left-[70%]"><LetterSlide reverse={letterReverse} letter='N' /></div>
+    <div class="absolute top-[50%] left-[80%]"><LetterSlide reverse={letterReverse} letter='A' /></div>
   </div>
 
   <!-- Bottom Overlay -->

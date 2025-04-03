@@ -2,10 +2,10 @@ import logo from '$lib/assets/media/logo.png';
 import soap from '$lib/assets/media/soap.jpg';
 import spacep from '$lib/assets/media/space.png';
 import mine from '$lib/assets/media/mine.png';
-import ericko from '$lib/assets/media/ericko.png';
+import ericko from '$lib/assets/media/ericko.jpg';
 import blind from '$lib/assets/media/blind.jpg'
-// import jumpkey from '$lib/assets/media/jumpkey.png';
-import v1 from '$lib/assets/media/v1.png';
+import limina from '$lib/assets/media/limina.jpg';
+import v1 from '$lib/assets/media/v1.jpg';
 
 export type Image = {
   image: string,
@@ -25,6 +25,11 @@ export const images: Array<Image> = [
     overlayColor: '#1e1e1e' 
   },
   { 
+    image: limina,
+    backgroundColor: '#0a0a0a',
+    overlayColor: '#D72638' 
+  },
+  { 
     image: spacep,
     backgroundColor: '#010919',
     overlayColor: '#e6e6e6' 
@@ -35,18 +40,13 @@ export const images: Array<Image> = [
     overlayColor: '#2a2a2a' 
   },
   {
-    image: v1,
-    backgroundColor: '#121212',
-    overlayColor: '#f0f0f0' 
-  },
-  {
     image: blind,
     backgroundColor: '#778279',
     overlayColor: '#cabba6' 
   },
-  { 
-    image: soap,
-    backgroundColor: '#b1beac',
-    overlayColor: '#2f2524' 
+  {
+    image: v1,
+    backgroundColor: '#121212',
+    overlayColor: '#f0f0f0' 
   },
 ];

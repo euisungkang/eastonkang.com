@@ -5,8 +5,10 @@
 
   let {
     color,
+    letterReverse,
   }: {
     color: string,
+    letterReverse: boolean,
   } = $props();
 
   let visible: boolean = $state(false);
@@ -32,14 +34,14 @@
     class="relative w-full h-full font-tny text-[20vw] pointer-events-none"
     style:color={color}
   >
-    <div class="absolute top-[10%] left-[15%]"><LetterSlide letter='O' /></div>
-    <div class="absolute top-[10%] left-[25%]"><LetterSlide letter='R' /></div>
-    <div class="absolute top-[10%] left-[40%]"><LetterSlide letter='D' /></div>
-    <div class="absolute top-[10%] left-[50%]"><LetterSlide letter='N' /></div>
-    <div class="absolute top-[50%] left-[20%]"><LetterSlide letter='A' /></div>
-    <div class="absolute top-[50%] left-[33%]"><LetterSlide letter='N' /></div>
-    <div class="absolute top-[50%] left-[45%]"><LetterSlide letter='C' /></div>
-    <div class="absolute top-[50%] left-[60%]"><LetterSlide letter='E' /></div>
+    <div class="absolute top-[10%] left-[15%]"><LetterSlide reverse={letterReverse} letter='O' /></div>
+    <div class="absolute top-[10%] left-[25%]"><LetterSlide reverse={letterReverse} letter='R' /></div>
+    <div class="absolute top-[10%] left-[40%]"><LetterSlide reverse={letterReverse} letter='D' /></div>
+    <div class="absolute top-[10%] left-[50%]"><LetterSlide reverse={letterReverse} letter='N' /></div>
+    <div class="absolute top-[50%] left-[20%]"><LetterSlide reverse={letterReverse} letter='A' /></div>
+    <div class="absolute top-[50%] left-[33%]"><LetterSlide reverse={letterReverse} letter='N' /></div>
+    <div class="absolute top-[50%] left-[45%]"><LetterSlide reverse={letterReverse} letter='C' /></div>
+    <div class="absolute top-[50%] left-[60%]"><LetterSlide reverse={letterReverse} letter='E' /></div>
   </div>
 
   <!-- Bottom Overlay -->
@@ -47,6 +49,7 @@
     color={color}
     leftFields={leftFields}
     rightFields={rightFields}
+    letterReverse={letterReverse}
   />
 {/if}
 

@@ -9,10 +9,12 @@
     color,
     leftFields,
     rightFields,
+    letterReverse,
   }: {
     color: string,
     leftFields: Array<string>,
     rightFields: Array<string>,
+    letterReverse: boolean,
   } = $props();
 
   let lineHeight: string = $state('0px');
