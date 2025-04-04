@@ -3,6 +3,7 @@
   import Logo from './Logo.svelte';
 	import Description from './Description.svelte';
 	import Crosshairs from './Crosshairs.svelte';
+  import Socials from './Socials.svelte';
   // import Socials from './Socials.svelte';
 	// import Links from './Links.svelte';
   // import Frame from './Frame.svelte';
@@ -41,9 +42,9 @@
     <!--     overlayColor={overlayColor} -->
     <!--   /> -->
     <!-- {/if} -->
-    <!-- <Socials  -->
-    <!--   overlayColor={overlayColor} -->
-    <!-- /> -->
+    <Socials 
+      overlayColor={overlayColor}
+    />
     <!-- <Links -->
     <!--   overlayColor={overlayColor} -->
     <!-- /> -->

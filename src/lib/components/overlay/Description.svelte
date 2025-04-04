@@ -8,8 +8,8 @@
   } = $props();
 
   const line1: string = 'FULLSTACK DEVELOPER';
-  // const line2: string = 'INSPIRED BY ARISTIDE BENOIST';
-  const line2: string = 'AVAILABLE SEPTEMBER 2025';
+  const line2: string = 'INSPIRED BY ARISTIDE';
+  // const line2: string = 'AVAILABLE SEPTEMBER 2025';
 </script>
 
 <div
