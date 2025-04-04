@@ -48,6 +48,7 @@
     leftFields={leftFields}
     rightFields={rightFields}
     letterReverse={letterReverse}
+    path={'/ericko'}
   />
 {/if}
 

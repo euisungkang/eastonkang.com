@@ -9,7 +9,7 @@
 	import EricKoOverlay from '$lib/components/gallery/EricKoOverlay.svelte';
 	import SpacePOverlay from '$lib/components/gallery/SpacePOverlay.svelte';
 	import MilitaryOverlay from '$lib/components/gallery/MilitaryOverlay.svelte';
-	import V1 from '$lib/components/gallery/V1.svelte';
+	import V1Overlay from '$lib/components/gallery/V1Overlay.svelte';
 	import BlindOverlay from '$lib/components/gallery/BlindOverlay.svelte';
 
   let gap: string = $state('1%');
@@ -75,7 +75,7 @@
   onMount(() => {
     setTimeout(() => {
       trackVisible = true;
-      // expandImage(2);
+      expandImage(1);
     }, 500);
   });
 
@@ -97,6 +97,13 @@
   onmouseup={() => mouseUpAt()}
   onmousemove={(e) => mouseMove(e)}
 >
+  <!-- <div  -->
+  <!--   class="absolute top-0 left-[50%] text-9xl bg-black" -->
+  <!--   style="view-transition-name: panels;" -->
+  <!-- > -->
+  <!--   TESTING TESTING -->
+  <!-- </div> -->
+
   <Overlay
     overlayColor={overlayColor}
   />
@@ -113,10 +120,12 @@
           <!-- svelte-ignore a11y_click_events_have_key_events-->
           <img 
             src={img.image}
+            fetchpriority={i <= 4 ? 'high' : 'low'}
             class="object-cover object-center select-none h-[50vh]
                    transition-[object-position,width,filter,opacity,margin-left] duration-1000 ease-out"
             onclick={() => expandImage(i)}
             in:fly={{ x: '50vw', duration: 1000 + (50 * i), easing: sineOut, delay: 100 * i }}
+            out:fly={{ y: '100vh', duration: 2000, easing: sineOut }}
             style:object-position="{imagePercentage}% center"
             style:margin-left="{i != 0 ? gap : '0%'}"
             style:filter="grayscale({i == grayscaleIndex ? 0 : 100}%)"
@@ -160,7 +169,7 @@
         letterReverse={letterReverse}
       />
     {:else if selectedIndex == 6}
-      <V1
+      <V1Overlay
         color={overlayColor}
         letterReverse={letterReverse}
       />

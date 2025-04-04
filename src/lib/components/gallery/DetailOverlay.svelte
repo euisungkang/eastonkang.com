@@ -10,11 +10,13 @@
     leftFields,
     rightFields,
     letterReverse,
+    path,
   }: {
     color: string,
     leftFields: Array<string>,
     rightFields: Array<string>,
     letterReverse: boolean,
+    path?: string,
   } = $props();
 
   let lineHeight: string = $state('0px');
@@ -88,7 +90,8 @@
   <!-- Middle -->
   <div class="w-24 space-y-4 flex flex-col items-center justify-end">
     <!-- Explore -->
-    <div 
+    <a
+      href={path ? path : '/#'}
       class="flex flex-col items-end text-xs leading-3"
     >
       <TextSlideX
@@ -103,7 +106,7 @@
           style:border-color={color}
         ></div>
       </div>
-    </div>
+    </a>
     <!-- Line -->
     <div class="h-8">
       <div 

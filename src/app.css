@@ -54,3 +54,26 @@
     font-style: normal;
   }
 }
+
+/* In app.css is usually better */
+/* @keyframes slide-in { */
+/*   from { transform: translateY(30px); opacity: 0; } */
+/* } */
+/* @keyframes slide-out { */
+/*   to { transform: translateY(30px); opacity: 0; } */
+/* } */
+/* @keyframes fade-in { from { opacity: 0; } } */
+/* @keyframes fade-out { to { opacity: 0; } } */
+/**/
+/* :root::view-transition-new(modal-content) { */
+/*   animation: slide-in 0.3s ease-out; */
+/* } */
+/* :root::view-transition-old(modal-content) { */
+/*    animation: slide-out 0.3s ease-in; */
+/* } */
+/* :root::view-transition-new(modal-backdrop) { */
+/*   animation: fade-in 0.3s ease-out; */
+/* } */
+/* :root::view-transition-old(modal-backdrop) { */
+/*    animation: fade-out 0.3s ease-in; */
+/* } */
