@@ -7,4 +7,10 @@
   <!--   src={images[1].image} -->
   <!--   alt="Test" -->
   <!-- /> -->
+  <div 
+    class="absolute top-0 left-[50%] text-9xl"
+    style="view-transition-name: panels;"
+  >
+    TESTING TESTING
+  </div>
 </div>

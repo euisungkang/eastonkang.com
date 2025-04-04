@@ -1,5 +1,4 @@
 <script lang="ts">
-  import "../app.css";
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
@@ -7,14 +6,8 @@
 
   import { onNavigate } from '$app/navigation';
 
-  function delayNavigation() {
-    return new Promise((res) => setTimeout(res, 3000));
-  }
-
   onNavigate((navigation) => {
     if (!document.startViewTransition) return;
-
-    // return delayNavigation();
 
     return new Promise((resolve) => {
       document.startViewTransition(async () => {
@@ -71,15 +64,15 @@
   /* 		3000ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right; */
   /* } */
 
-  /* ::view-transition-old(panels) { */
-  /*   animation: */
-  /*     500ms cubic-bezier(0.4, 0, 1, 1) both fade-out, */
-  /*     1000ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left; */
-  /* } */
-  /**/
-  /* ::view-transition-new(panels) { */
-  /*   animation: */
-  /*     2000ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in, */
-  /*     3000ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right; */
-  /* } */
+  ::view-transition-old(panels) {
+    animation:
+      500ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+      1000ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+  }
+
+  ::view-transition-new(panels) {
+    animation:
+      2000ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+      3000ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+  }
 </style>
