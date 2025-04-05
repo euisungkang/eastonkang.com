@@ -7,24 +7,24 @@
 	import { sineOut } from 'svelte/easing';
   import { fly } from 'svelte/transition';
 
-  const image: Image = images[0];
+  const image: Image = images[6];
   let visible: boolean = $state(false);
 
   const leftFields: Array<string> = [
-    'ONGOING', 
-    'PASSION',
-    'FULL-STACK DEV & CREATIVE DESIGN',
-    'WAVY SUITE',
+    'AUGUST 2022', 
+    'PORTFOLIO',
+    'FULL-STACK DEV & MOTION',
+    'EASTON KANG',
   ];
   const rightFields: Array<string> = [
-    'USER SATISFACTION AND CONVENIENCE',
-    'PLATFORM FOR COMMUNITY CREATORS',
+    'FIRST RELEASE OF PORTFOLIO MADE',
+    'WITH SVELTEKIT|GSAP|FRAMER',
   ];
 
   onMount(() => {
     colorState.overlayColor = image.overlayColor;
     colorState.backgroundColor = image.backgroundColor;
-    colorState.selectedIndex = 0;
+    colorState.selectedIndex = 6;
     visible = true;
   });
 </script>
@@ -52,21 +52,33 @@
       style:color={colorState.overlayColor}
     >
       <div 
-        class="absolute top-[10%] left-[75%] w-[8vw] h-[30vh] flex items-center justify-start"
-        in:fly={{ x: '-53vw', duration: 1000, easing: sineOut, opacity: 1 }}
-      >W</div>
-      <div 
-        class="absolute top-[10%] left-[85%] w-[8vw] h-[30vh] flex items-center justify-start"
+        class="absolute top-[15%] left-[70%] w-[8vw] h-[30vh] flex items-center justify-start"
         in:fly={{ x: '-48vw', duration: 1000, easing: sineOut, opacity: 1 }}
-      >A</div>
+      >F</div>
       <div 
-        class="absolute top-[55%] left-[80%] w-[8vw] h-[30vh] flex items-center justify-start"
-        in:fly={{ x: '-23vw', duration: 1000, easing: sineOut, opacity: 1 }}
+        class="absolute top-[15%] left-[75%] w-[8vw] h-[30vh] flex items-center justify-start"
+        in:fly={{ x: '-40vw', duration: 1000, easing: sineOut, opacity: 1 }}
+      >O</div>
+      <div 
+        class="absolute top-[15%] left-[80%] w-[8vw] h-[30vh] flex items-center justify-start"
+        in:fly={{ x: '-25vw', duration: 1000, easing: sineOut, opacity: 1 }}
+      >L</div>
+      <div 
+        class="absolute top-[15%] left-[85%] w-[8vw] h-[30vh] flex items-center justify-start"
+        in:fly={{ x: '-20vw', duration: 1000, easing: sineOut, opacity: 1 }}
+      >I</div>
+      <div 
+        class="absolute top-[15%] left-[90%] w-[8vw] h-[30vh] flex items-center justify-start"
+        in:fly={{ x: '-18vw', duration: 1000, easing: sineOut, opacity: 1 }}
+      >O</div>
+      <div 
+        class="absolute top-[50%] left-[75%] w-[8vw] h-[30vh] flex items-center justify-start"
+        in:fly={{ x: '-33vw', duration: 1000, easing: sineOut, opacity: 1 }}
       >V</div>
       <div 
-        class="absolute top-[55%] left-[90%] w-[8vw] h-[30vh] flex items-center justify-start"
-        in:fly={{ x: '-18vw', duration: 1000, easing: sineOut, opacity: 1 }}
-      >Y</div>
+        class="absolute top-[50%] left-[85%] w-[8vw] h-[30vh] flex items-center justify-start"
+        in:fly={{ x: '-33vw', duration: 1000, easing: sineOut, opacity: 1 }}
+      >1</div>
     </div>
   {/if}
 </div>

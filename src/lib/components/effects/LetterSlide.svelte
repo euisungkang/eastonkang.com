@@ -19,7 +19,9 @@
 </script>
 
 {#if visible}
-  <div class="w-40 h-80 flex items-center justify-center overflow-hidden">
+  <div 
+    class="w-[8vw] h-[30vh] flex items-center justify-start overflow-hidden"
+  >
     <div in:fly={{ x: reverse ? 150 : -150, easing: sineOut, duration: 1000, opacity: 1 }}>
       {letter}
     </div>

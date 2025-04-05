@@ -18,7 +18,7 @@
     target="_blank"
     rel="noopener noreferrer"
   >
-    <TextSlideY
+    <TextSlideY 
       text={'LINKEDIN'}
     />
   </a>
@@ -28,7 +28,7 @@
     target="_blank"
     rel="noopener noreferrer"
   >
-    <TextSlideY
+    <TextSlideY 
       text={'GITHUB'}
     />
   </a>

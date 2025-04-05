@@ -7,24 +7,24 @@
 	import { sineOut } from 'svelte/easing';
   import { fly } from 'svelte/transition';
 
-  const image: Image = images[0];
+  const image: Image = images[1];
   let visible: boolean = $state(false);
 
   const leftFields: Array<string> = [
     'ONGOING', 
-    'PASSION',
-    'FULL-STACK DEV & CREATIVE DESIGN',
-    'WAVY SUITE',
+    'PORTFOLIO',
+    'FULL-STACK DEV & MOTION',
+    'ERIC KO',
   ];
   const rightFields: Array<string> = [
-    'USER SATISFACTION AND CONVENIENCE',
-    'PLATFORM FOR COMMUNITY CREATORS',
+    'PORTFOLIO OF ERIC KO, CREATIVE',
+    'PHOTOGRAPHER AND DESIGNER',
   ];
 
   onMount(() => {
     colorState.overlayColor = image.overlayColor;
     colorState.backgroundColor = image.backgroundColor;
-    colorState.selectedIndex = 0;
+    colorState.selectedIndex = 1;
     visible = true;
   });
 </script>
@@ -53,20 +53,28 @@
     >
       <div 
         class="absolute top-[10%] left-[75%] w-[8vw] h-[30vh] flex items-center justify-start"
-        in:fly={{ x: '-53vw', duration: 1000, easing: sineOut, opacity: 1 }}
-      >W</div>
+        in:fly={{ x: '-56vw', duration: 1000, easing: sineOut, opacity: 1 }}
+      >E</div>
+      <div 
+        class="absolute top-[10%] left-[80%] w-[8vw] h-[30vh] flex items-center justify-start"
+        in:fly={{ x: '-56vw', duration: 1000, easing: sineOut, opacity: 1 }}
+      >R</div>
       <div 
         class="absolute top-[10%] left-[85%] w-[8vw] h-[30vh] flex items-center justify-start"
+        in:fly={{ x: '-50vw', duration: 1000, easing: sineOut, opacity: 1 }}
+      >I</div>
+      <div 
+        class="absolute top-[10%] left-[90%] w-[8vw] h-[30vh] flex items-center justify-start"
         in:fly={{ x: '-48vw', duration: 1000, easing: sineOut, opacity: 1 }}
-      >A</div>
+      >C</div>
       <div 
-        class="absolute top-[55%] left-[80%] w-[8vw] h-[30vh] flex items-center justify-start"
-        in:fly={{ x: '-23vw', duration: 1000, easing: sineOut, opacity: 1 }}
-      >V</div>
+        class="absolute top-[55%] left-[75%] w-[8vw] h-[30vh] flex items-center justify-start"
+        in:fly={{ x: '-10vw', duration: 1000, easing: sineOut, opacity: 1 }}
+      >K</div>
       <div 
-        class="absolute top-[55%] left-[90%] w-[8vw] h-[30vh] flex items-center justify-start"
-        in:fly={{ x: '-18vw', duration: 1000, easing: sineOut, opacity: 1 }}
-      >Y</div>
+        class="absolute top-[55%] left-[85%] w-[8vw] h-[30vh] flex items-center justify-start"
+        in:fly={{ x: '-13vw', duration: 1000, easing: sineOut, opacity: 1 }}
+      >O</div>
     </div>
   {/if}
 </div>

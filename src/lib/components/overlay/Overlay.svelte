@@ -4,9 +4,7 @@
 	import Description from './Description.svelte';
 	import Crosshairs from './Crosshairs.svelte';
   import Socials from './Socials.svelte';
-  // import Socials from './Socials.svelte';
 	// import Links from './Links.svelte';
-  // import Frame from './Frame.svelte';
 
   type Props = {
     overlayColor: string,
@@ -29,7 +27,7 @@
 >
   {#if load}
     <Crosshairs
-      overlayColor={overlayColor == '#adb5ad' ? '#FFFFFF' : overlayColor}
+      overlayColor={overlayColor}
     />
     <Logo 
       overlayColor={overlayColor}
@@ -42,7 +40,7 @@
     <!--     overlayColor={overlayColor} -->
     <!--   /> -->
     <!-- {/if} -->
-    <Socials 
+    <Socials
       overlayColor={overlayColor}
     />
     <!-- <Links -->

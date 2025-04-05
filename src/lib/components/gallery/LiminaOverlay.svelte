@@ -37,9 +37,9 @@
     <div class="absolute top-[10%] left-[15%]"><LetterSlide reverse={letterReverse} letter='L' /></div>
     <div class="absolute top-[10%] left-[25%]"><LetterSlide reverse={letterReverse} letter='I' /></div>
     <div class="absolute top-[10%] left-[35%]"><LetterSlide reverse={letterReverse} letter='M' /></div>
-    <div class="absolute top-[50%] left-[60%]"><LetterSlide reverse={letterReverse} letter='I' /></div>
-    <div class="absolute top-[50%] left-[70%]"><LetterSlide reverse={letterReverse} letter='N' /></div>
-    <div class="absolute top-[50%] left-[80%]"><LetterSlide reverse={letterReverse} letter='A' /></div>
+    <div class="absolute top-[55%] left-[60%]"><LetterSlide reverse={letterReverse} letter='I' /></div>
+    <div class="absolute top-[55%] left-[70%]"><LetterSlide reverse={letterReverse} letter='N' /></div>
+    <div class="absolute top-[55%] left-[80%]"><LetterSlide reverse={letterReverse} letter='A' /></div>
   </div>
 
   <!-- Bottom Overlay -->
@@ -47,7 +47,8 @@
     color={color}
     leftFields={leftFields}
     rightFields={rightFields}
-    letterReverse={letterReverse}
+    invert={false}
+    path={'/limina'}
   />
 {/if}
 

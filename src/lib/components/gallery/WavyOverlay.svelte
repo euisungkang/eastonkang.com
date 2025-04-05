@@ -34,10 +34,10 @@
     class="relative w-full h-full font-tny text-[20vw] pointer-events-none"
     style:color={color}
   >
-    <div class="absolute top-[10%] left-[20%]"><LetterSlide reverse={letterReverse} letter='W' /></div>
-    <div class="absolute top-[10%] left-[35%]"><LetterSlide reverse={letterReverse} letter='A' /></div>
-    <div class="absolute top-[50%] left-[55%]"><LetterSlide reverse={letterReverse} letter='V' /></div>
-    <div class="absolute top-[50%] left-[70%]"><LetterSlide reverse={letterReverse} letter='Y' /></div>
+    <div class="absolute top-[10%] left-[22%]"><LetterSlide reverse={letterReverse} letter='W' /></div>
+    <div class="absolute top-[10%] left-[37%]"><LetterSlide reverse={letterReverse} letter='A' /></div>
+    <div class="absolute top-[55%] left-[57%]"><LetterSlide reverse={letterReverse} letter='V' /></div>
+    <div class="absolute top-[55%] left-[72%]"><LetterSlide reverse={letterReverse} letter='Y' /></div>
   </div>
 
   <!-- Bottom Overlay -->
@@ -45,7 +45,8 @@
     color={color}
     leftFields={leftFields}
     rightFields={rightFields}
-    letterReverse={letterReverse}
+    invert={false}
+    path={'/wavy'}
   />
 {/if}
 
