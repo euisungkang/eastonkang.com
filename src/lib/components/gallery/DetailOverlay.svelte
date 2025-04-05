@@ -57,7 +57,7 @@
 {#snippet explore()}
   <a
     href={path ? path : '/#'}
-    class="flex flex-col items-end text-xs leading-3"
+    class="flex flex-col items-end text-xs leading-3 cursor-pointer"
   >
     <TextSlideX text={invert ? 'RETURN' : 'EXPLORE'} letterDelay={50} />
     <div class="relative bg-white w-full">
@@ -82,7 +82,8 @@
     <div class="w-1/4 flex">
       <div class="w-1/2"></div>
       <div class="w-1/2 flex-col leading-2.5 text-left items-center">
-        <TextSlideY text='A' /> <TextSlideY text='B' delay={50} />
+        <TextSlideY text='A' /> 
+        <TextSlideY text='B' delay={50} />
         <TextSlideY text='C' delay={100} />
         <TextSlideY text='D' delay={150} />
       </div>

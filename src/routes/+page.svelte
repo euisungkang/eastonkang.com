@@ -74,6 +74,8 @@
     setTimeout(() => {
       trackVisible = true;
       expandImage(selectedIndex);
+      console.log('<Developed by Easton Kang> https://eastonkang.com');
+      // expandImage(6);
     }, 500);
   });
 

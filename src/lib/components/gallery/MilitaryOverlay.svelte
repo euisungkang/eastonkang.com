@@ -34,14 +34,14 @@
     class="relative w-full h-full font-tny text-[20vw] pointer-events-none"
     style:color={color}
   >
-    <div class="absolute top-[10%] left-[15%]"><LetterSlide reverse={letterReverse} letter='O' /></div>
-    <div class="absolute top-[10%] left-[25%]"><LetterSlide reverse={letterReverse} letter='R' /></div>
-    <div class="absolute top-[10%] left-[40%]"><LetterSlide reverse={letterReverse} letter='D' /></div>
-    <div class="absolute top-[10%] left-[50%]"><LetterSlide reverse={letterReverse} letter='N' /></div>
-    <div class="absolute top-[50%] left-[20%]"><LetterSlide reverse={letterReverse} letter='A' /></div>
-    <div class="absolute top-[50%] left-[33%]"><LetterSlide reverse={letterReverse} letter='N' /></div>
-    <div class="absolute top-[50%] left-[45%]"><LetterSlide reverse={letterReverse} letter='C' /></div>
-    <div class="absolute top-[50%] left-[60%]"><LetterSlide reverse={letterReverse} letter='E' /></div>
+    <div class="absolute top-[10%] left-[17%]"><LetterSlide reverse={letterReverse} letter='O' /></div>
+    <div class="absolute top-[10%] left-[27%]"><LetterSlide reverse={letterReverse} letter='R' /></div>
+    <div class="absolute top-[10%] left-[42%]"><LetterSlide reverse={letterReverse} letter='D' /></div>
+    <div class="absolute top-[10%] left-[52%]"><LetterSlide reverse={letterReverse} letter='N' /></div>
+    <div class="absolute top-[55%] left-[22%]"><LetterSlide reverse={letterReverse} letter='A' /></div>
+    <div class="absolute top-[55%] left-[32%]"><LetterSlide reverse={letterReverse} letter='N' /></div>
+    <div class="absolute top-[55%] left-[47%]"><LetterSlide reverse={letterReverse} letter='C' /></div>
+    <div class="absolute top-[55%] left-[57%]"><LetterSlide reverse={letterReverse} letter='E' /></div>
   </div>
 
   <!-- Bottom Overlay -->
@@ -50,6 +50,7 @@
     leftFields={leftFields}
     rightFields={rightFields}
     invert={false}
+    path={'/military'}
   />
 {/if}
 
