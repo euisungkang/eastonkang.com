@@ -7,24 +7,24 @@
 	import { sineOut } from 'svelte/easing';
   import { fly } from 'svelte/transition';
 
-  const image: Image = images[1];
+  const image: Image = images[0];
   let visible: boolean = $state(false);
 
   const leftFields: Array<string> = [
     'ONGOING', 
-    'PORTFOLIO',
-    'FULL-STACK DEV & MOTION',
-    'ERIC KO',
+    'PASSION',
+    'FULL-STACK DEV & CREATIVE DESIGN',
+    'WAVY SUITE',
   ];
   const rightFields: Array<string> = [
-    'PORTFOLIO OF ERIC KO, CREATIVE',
-    'PHOTOGRAPHER AND DESIGNER',
+    'USER SATISFACTION AND CONVENIENCE',
+    'PLATFORM FOR COMMUNITY CREATORS',
   ];
 
   onMount(() => {
     colorState.overlayColor = image.overlayColor;
     colorState.backgroundColor = image.backgroundColor;
-    colorState.selectedIndex = 1;
+    colorState.selectedIndex = 0;
     visible = true;
   });
 </script>
@@ -53,28 +53,20 @@
     >
       <div 
         class="absolute top-[10%] left-[75%] w-40 h-80 flex items-center justify-start"
-        in:fly={{ x: '-60vw', duration: 1000, easing: sineOut, opacity: 1 }}
-      >E</div>
-      <div 
-        class="absolute top-[10%] left-[80%] w-40 h-80 flex items-center justify-start"
         in:fly={{ x: '-55vw', duration: 1000, easing: sineOut, opacity: 1 }}
-      >R</div>
+      >W</div>
       <div 
         class="absolute top-[10%] left-[85%] w-40 h-80 flex items-center justify-start"
-        in:fly={{ x: '-55vw', duration: 1000, easing: sineOut, opacity: 1 }}
-      >I</div>
-      <div 
-        class="absolute top-[10%] left-[90%] w-40 h-80 flex items-center justify-start"
         in:fly={{ x: '-50vw', duration: 1000, easing: sineOut, opacity: 1 }}
-      >C</div>
+      >A</div>
       <div 
-        class="absolute top-[50%] left-[75%] w-40 h-80 flex items-center justify-start"
-        in:fly={{ x: '-10vw', duration: 1000, easing: sineOut, opacity: 1 }}
-      >K</div>
+        class="absolute top-[50%] left-[80%] w-40 h-80 flex items-center justify-start"
+        in:fly={{ x: '-25vw', duration: 1000, easing: sineOut, opacity: 1 }}
+      >V</div>
       <div 
-        class="absolute top-[50%] left-[85%] w-40 h-80 flex items-center justify-start"
-        in:fly={{ x: '-10vw', duration: 1000, easing: sineOut, opacity: 1 }}
-      >O</div>
+        class="absolute top-[50%] left-[90%] w-40 h-80 flex items-center justify-start"
+        in:fly={{ x: '-20vw', duration: 1000, easing: sineOut, opacity: 1 }}
+      >Y</div>
     </div>
   {/if}
 </div>

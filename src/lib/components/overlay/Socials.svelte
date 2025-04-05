@@ -1,4 +1,6 @@
 <script lang='ts'>
+	import TextSlideY from "../effects/TextSlideY.svelte";
+
   let { 
     overlayColor = '#FFFFFF'
   }: {
@@ -16,7 +18,9 @@
     target="_blank"
     rel="noopener noreferrer"
   >
-    LINKEDIN
+    <TextSlideY 
+      text={'LINKEDIN'}
+    />
   </a>
   <a
     aria-label="Github"
@@ -24,6 +28,8 @@
     target="_blank"
     rel="noopener noreferrer"
   >
-    GITHUB
+    <TextSlideY 
+      text={'GITHUB'}
+    />
   </a>
 </div>

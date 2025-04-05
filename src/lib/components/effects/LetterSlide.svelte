@@ -20,8 +20,8 @@
 
 {#if visible}
   <div 
-    class="w-40 h-80 flex items-center justify-center overflow-hidden"
-    style="view-transition-name: panels;"
+    class="w-40 h-80 flex items-center justify-start overflow-hidden"
+    style="view-transition-name: letters;"
   >
     <div in:fly={{ x: reverse ? 150 : -150, easing: sineOut, duration: 1000, opacity: 1 }}>
       {letter}

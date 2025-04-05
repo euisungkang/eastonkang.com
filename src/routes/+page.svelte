@@ -2,8 +2,8 @@
   import { onMount} from 'svelte';
   import { fly } from 'svelte/transition';
   import { images } from '$lib/constants/images';
-  import Overlay from '$lib/components/overlay/Overlay.svelte';
 	import { sineOut } from 'svelte/easing';
+  import { colorState } from '$lib/states/color.svelte';
   import WavyOverlay from '$lib/components/gallery/WavyOverlay.svelte';
   import LiminaOverlay from '$lib/components/gallery/LiminaOverlay.svelte';
 	import EricKoOverlay from '$lib/components/gallery/EricKoOverlay.svelte';
@@ -13,7 +13,7 @@
 	import BlindOverlay from '$lib/components/gallery/BlindOverlay.svelte';
 
   let gap: string = $state('1%');
-  let selectedIndex: number = $state(-1);
+  let selectedIndex: number = $derived(colorState.selectedIndex);
   let grayscaleIndex: number = $state(0);
   let mouseDownX: number = 0; 
   let mouseUpX: number = 50;
@@ -21,12 +21,10 @@
   let percentage: number = $state(50);
   let imagePercentage: number = $state(100);
   let letterReverse: boolean = $state(false); // ! = left -> right
-
-  let backgroundColor: string = $state('#121212');
-  let overlayColor: string = $state('#adb5ad');
   let trackVisible: boolean = $state(false);
 
   function expandImage(i: number) {
+    if (i == -1) return;
     // (-14 (def vw) - 7 (post-ml)) * i + (25 (half of expanded))
     letterReverse = selectedIndex != -1 && i < selectedIndex;
     percentage = (-21 * i) + 25;
@@ -35,8 +33,8 @@
     gap = '7%';
     imagePercentage = 50;
 
-    backgroundColor = images[i].backgroundColor;
-    overlayColor = images[i].overlayColor;
+    colorState.backgroundColor = images[i].backgroundColor;
+    colorState.overlayColor = images[i].overlayColor;
   }
 
   function mouseDownAt(e: MouseEvent) {
@@ -68,27 +66,27 @@
     selectedIndex = -1;
     gap = '1%';
     letterReverse = false;
-    backgroundColor = '#121212';
-    overlayColor = '#adb5ad';
+    colorState.backgroundColor = '#121212';
+    colorState.overlayColor = '#adb5ad';
   }
 
   onMount(() => {
     setTimeout(() => {
       trackVisible = true;
-      expandImage(1);
+      expandImage(selectedIndex);
     }, 500);
   });
 
-  $effect(() => {
-    console.log(percentage, imagePercentage);
-  });
+  // $effect(() => {
+  //   console.log(percentage, imagePercentage);
+  // });
 </script>
 
 <svelte:window bind:innerWidth />
 
 <div 
   class="dark h-screen w-screen overflow-hidden transition-colors duration-1000 ease-out"
-  style:background-color={backgroundColor}
+  style:background-color={colorState.backgroundColor}
   role="scrollbar"
   aria-controls="0,1"
   aria-valuenow="0"
@@ -97,17 +95,12 @@
   onmouseup={() => mouseUpAt()}
   onmousemove={(e) => mouseMove(e)}
 >
-  <div 
-    class="absolute top-0 left-[50%] text-9xl"
-    style="view-transition-name: panels;"
-  >
-    TESTING TESTING
-  </div>
-
-  <Overlay
-    overlayColor={overlayColor}
-  />
-
+  <!-- <div  -->
+  <!--   class="absolute top-0 left-[50%] text-9xl" -->
+  <!--   style="view-transition-name: panels;" -->
+  <!-- > -->
+  <!--   TESTING TESTING -->
+  <!-- </div> -->
   <div class="h-full w-full relative">
     <div
       class="flex absolute top-[50%] w-full items-center justify-start
@@ -125,7 +118,7 @@
                    transition-[object-position,width,filter,opacity,margin-left] duration-1000 ease-out"
             onclick={() => expandImage(i)}
             in:fly={{ x: '50vw', duration: 1000 + (50 * i), easing: sineOut, delay: 100 * i }}
-            out:fly={{ y: '100vh', duration: 2000, easing: sineOut }}
+            style:view-transition-name={i == selectedIndex ? 'panels' : ''}
             style:object-position="{imagePercentage}% center"
             style:margin-left="{i != 0 ? gap : '0%'}"
             style:filter="grayscale({i == grayscaleIndex ? 0 : 100}%)"
@@ -140,37 +133,37 @@
 
     {#if selectedIndex == 0}
       <WavyOverlay
-        color={overlayColor}
+        color={colorState.overlayColor}
         letterReverse={letterReverse}
       />
     {:else if selectedIndex == 1}
       <EricKoOverlay
-        color={overlayColor}
+        color={colorState.overlayColor}
         letterReverse={letterReverse}
       />
     {:else if selectedIndex == 2}
       <LiminaOverlay
-        color={overlayColor}
+        color={colorState.overlayColor}
         letterReverse={letterReverse}
       />
     {:else if selectedIndex == 3}
       <SpacePOverlay
-        color={overlayColor}
+        color={colorState.overlayColor}
         letterReverse={letterReverse}
       />
     {:else if selectedIndex == 4}
       <MilitaryOverlay
-        color={overlayColor}
+        color={colorState.overlayColor}
         letterReverse={letterReverse}
       />
     {:else if selectedIndex == 5}
       <BlindOverlay
-        color={overlayColor}
+        color={colorState.overlayColor}
         letterReverse={letterReverse}
       />
     {:else if selectedIndex == 6}
       <V1Overlay
-        color={overlayColor}
+        color={colorState.overlayColor}
         letterReverse={letterReverse}
       />
     {/if}

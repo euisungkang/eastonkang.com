@@ -48,7 +48,7 @@
     color={color}
     leftFields={leftFields}
     rightFields={rightFields}
-    letterReverse={letterReverse}
+    invert={false}
   />
 {/if}
 
