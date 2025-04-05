@@ -97,12 +97,6 @@
   onmouseup={() => mouseUpAt()}
   onmousemove={(e) => mouseMove(e)}
 >
-  <!-- <div  -->
-  <!--   class="absolute top-0 left-[50%] text-9xl" -->
-  <!--   style="view-transition-name: panels;" -->
-  <!-- > -->
-  <!--   TESTING TESTING -->
-  <!-- </div> -->
   <div class="h-full w-full relative">
     <div
       class="flex absolute top-[50%] w-full items-center justify-start
@@ -120,7 +114,6 @@
                    transition-[object-position,width,filter,opacity,margin-left] duration-1000 ease-out"
             onclick={() => expandImage(i)}
             in:fly={{ x: '50vw', duration: 1000 + (50 * i), easing: sineOut, delay: 100 * i }}
-            style:view-transition-name={i == selectedIndex ? 'panels' : ''}
             style:object-position="{imagePercentage}% center"
             style:margin-left="{i != 0 ? gap : '0%'}"
             style:filter="grayscale({i == grayscaleIndex ? 0 : 100}%)"
