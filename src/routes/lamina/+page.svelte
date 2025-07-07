@@ -45,7 +45,7 @@
 			{leftFields}
 			{rightFields}
 			invert={true}
-			path={'/'}
+			path={'/gallery'}
 		/>
 		<div
 			class="relative w-full h-full font-tny text-[20vw] pointer-events-none"
