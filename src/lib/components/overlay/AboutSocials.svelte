@@ -9,7 +9,7 @@
 </script>
 
 <div
-	class="absolute font-jws z-10 text-xs bottom-12 right-12 flex flex-col items-end leading-3.5"
+	class="absolute font-jws z-10 text-xs leading-3.5 bottom-12 right-12 flex flex-col items-end"
 	style:color={overlayColor}
 >
 	<a
@@ -27,5 +27,8 @@
 		rel="noopener noreferrer"
 	>
 		<TextSlideY text={'LINKEDIN'} />
+	</a>
+	<a aria-label="Email" href="mailto:easton@lamina.dev" target="_blank" rel="noopener noreferrer">
+		<TextSlideY text={'EMAIL'} />
 	</a>
 </div>
