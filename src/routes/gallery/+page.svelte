@@ -11,6 +11,7 @@
 	import MilitaryOverlay from '$lib/components/gallery/MilitaryOverlay.svelte';
 	import V1Overlay from '$lib/components/gallery/V1Overlay.svelte';
 	import BlindOverlay from '$lib/components/gallery/BlindOverlay.svelte';
+	import ArrowHelper from '$lib/components/overlay/ArrowHelper.svelte';
 
 	let gap: string = $state('1%');
 	let selectedIndex: number = $derived(colorState.selectedIndex);
@@ -46,6 +47,12 @@
 		mouseUpX = percentage;
 	}
 
+	function handleKeydown(e: KeyboardEvent) {
+		if (e.key === 'ArrowLeft' && selectedIndex > 0) expandImage(selectedIndex - 1);
+		else if (e.key === 'ArrowRight' && selectedIndex < images.length - 1)
+			expandImage(selectedIndex + 1);
+	}
+
 	function mouseMove(e: MouseEvent) {
 		if (mouseDownX == 0) return;
 
@@ -75,16 +82,12 @@
 			trackVisible = true;
 			expandImage(selectedIndex);
 			console.log('<Developed by Easton Kang> https://eastonkang.com');
-			// expandImage(6);
+			// expandImage(5);
 		}, 500);
 	});
-
-	// $effect(() => {
-	//   console.log(percentage, imagePercentage);
-	// });
 </script>
 
-<svelte:window bind:innerWidth />
+<svelte:window on:keydown={handleKeydown} bind:innerWidth />
 
 <div
 	class="dark h-screen w-screen overflow-hidden transition-colors duration-1000 ease-out"
@@ -98,6 +101,10 @@
 	onmousemove={(e) => mouseMove(e)}
 >
 	<div class="h-full w-full relative">
+		{#if selectedIndex == -1 && percentage >= 35}
+			<ArrowHelper color={colorState.overlayColor} />
+		{/if}
+
 		<div
 			class="flex absolute top-[50%] w-full items-center justify-start
              transition-transform duration-1000 ease-out"

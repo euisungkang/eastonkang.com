@@ -11,6 +11,7 @@
 		rightFields,
 		invert = false,
 		simple = false,
+		delay = 0,
 		customLabel = 'EXPLORE',
 		path
 	}: {
@@ -18,7 +19,8 @@
 		leftFields: Array<string>;
 		rightFields: Array<string>;
 		invert: boolean;
-		simple: boolean;
+		simple?: boolean;
+		delay?: number;
 		customLabel?: string;
 		path?: string;
 	} = $props();
@@ -28,11 +30,13 @@
 	let visible: boolean = $state(false);
 
 	onMount(() => {
-		visible = true;
 		setTimeout(() => {
-			lineWidth = '100%';
-			lineHeight = '2rem';
-		}, 500);
+			visible = true;
+			setTimeout(() => {
+				lineWidth = '100%';
+				lineHeight = '2rem';
+			}, 500);
+		}, delay);
 	});
 </script>
 
@@ -108,23 +112,25 @@
 	{/if}
 
 	<!-- Middle -->
-	<div class="w-24 space-y-4 flex flex-col items-center justify-end">
-		{#if invert}
-			<!-- Plus -->
-			{@render plus()}
-			<!-- Line -->
-			{@render line()}
-			<!-- Explore -->
-			{@render explore()}
-		{:else}
-			<!-- Explore -->
-			{@render explore()}
-			<!-- Line -->
-			{@render line()}
-			<!-- Plus -->
-			{@render plus()}
-		{/if}
-	</div>
+	{#if visible}
+		<div class="w-24 space-y-4 flex flex-col items-center justify-end">
+			{#if invert}
+				<!-- Plus -->
+				{@render plus()}
+				<!-- Line -->
+				{@render line()}
+				<!-- Explore -->
+				{@render explore()}
+			{:else}
+				<!-- Explore -->
+				{@render explore()}
+				<!-- Line -->
+				{@render line()}
+				<!-- Plus -->
+				{@render plus()}
+			{/if}
+		</div>
+	{/if}
 
 	<!-- Right -->
 	{#if !simple}

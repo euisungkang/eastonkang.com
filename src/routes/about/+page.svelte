@@ -51,18 +51,6 @@
 		<div class="absolute top-[2%] left-[26%]">
 			<LetterSlide reverse={letterReverse} letter="N" />
 		</div>
-		<!-- <div class="absolute top-[32%] left-[2%]"> -->
-		<!-- 	<LetterSlide reverse={letterReverse} letter="K" /> -->
-		<!-- </div> -->
-		<!-- <div class="absolute top-[32%] left-[10%]"> -->
-		<!-- 	<LetterSlide reverse={letterReverse} letter="A" /> -->
-		<!-- </div> -->
-		<!-- <div class="absolute top-[32%] left-[18%]"> -->
-		<!-- 	<LetterSlide reverse={letterReverse} letter="N" /> -->
-		<!-- </div> -->
-		<!-- <div class="absolute top-[32%] left-[26%]"> -->
-		<!-- 	<LetterSlide reverse={letterReverse} letter="G" /> -->
-		<!-- </div> -->
 	</div>
 
 	{#if load}
@@ -101,10 +89,12 @@
 			{rightFields}
 			simple={true}
 			customLabel={'GALLERY'}
+			delay={1200}
 			invert={false}
 			path={'/gallery'}
 		/>
-		<AboutSocials overlayColor={textColor} />
-		<Description overlayColor={textColor} invert={true} />
+
+		<AboutSocials overlayColor={textColor} delay={1500} />
+		<Description overlayColor={textColor} invert={true} delay={1500} />
 	{/if}
 </div>

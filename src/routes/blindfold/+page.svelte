@@ -1,4 +1,5 @@
 <script lang="ts">
+	import TextSlideY from '$lib/components/effects/TextSlideY.svelte';
 	import DetailOverlay from '$lib/components/gallery/DetailOverlay.svelte';
 	import { images } from '$lib/constants/images';
 	import type { Image } from '$lib/constants/images';
@@ -20,6 +21,10 @@
 		'TOTAL DARKNESS IN COMPLETE FOCUS',
 		'COMFORT FOR EVERY MOMENT'
 	];
+	const description: Array<string> = [
+		'TOTAL DARKNESS IN COMPLETE FOCUS',
+		'COMFORT FOR EVERY MOMENT'
+	];
 
 	onMount(() => {
 		colorState.overlayColor = image.overlayColor;
@@ -32,11 +37,12 @@
 <div
 	class="h-screen w-screen flex items-center justify-center overflow-hidden"
 	style:background-color={image.backgroundColor}
+	style:color={image.overlayColor}
 >
 	{#if visible}
 		<img
 			src={image.image}
-			class="absolute left-[5%] top-[25%] h-[50vh] w-[50vw] object-cover object-center"
+			class="absolute left-[5%] top-[25%] h-[50%] w-[50%] object-cover object-center"
 			in:fly={{ x: '40%', duration: 1000, easing: sineOut, opacity: 1 }}
 			alt="Test"
 		/>
@@ -47,24 +53,25 @@
 			invert={true}
 			path={'/gallery'}
 		/>
+
 		<div
 			class="relative w-full h-full font-tny text-[20vw] pointer-events-none"
 			style:color={colorState.overlayColor}
 		>
 			<div
-				class="absolute top-[10%] left-[70%] w-[8vw] h-[30vh] flex items-center justify-start"
+				class="absolute top-[10%] left-[73.5%] w-[8vw] h-[30vh] flex items-center justify-start"
 				in:fly={{ x: '-51vw', duration: 1000, easing: sineOut, opacity: 1 }}
 			>
 				B
 			</div>
 			<div
-				class="absolute top-[10%] left-[75%] w-[8vw] h-[30vh] flex items-center justify-start"
+				class="absolute top-[10%] left-[78.5%] w-[8vw] h-[30vh] flex items-center justify-start"
 				in:fly={{ x: '-45vw', duration: 1000, easing: sineOut, opacity: 1 }}
 			>
 				L
 			</div>
 			<div
-				class="absolute top-[10%] left-[80%] w-[8vw] h-[30vh] flex items-center justify-start"
+				class="absolute top-[10%] left-[82.5%] w-[8vw] h-[30vh] flex items-center justify-start"
 				in:fly={{ x: '-35vw', duration: 1000, easing: sineOut, opacity: 1 }}
 			>
 				I
@@ -82,19 +89,19 @@
 				D
 			</div>
 			<div
-				class="absolute top-[55%] left-[75%] w-[8vw] h-[30vh] flex items-center justify-start"
+				class="absolute top-[55%] left-[77%] w-[8vw] h-[30vh] flex items-center justify-start"
 				in:fly={{ x: '-51vw', duration: 1000, easing: sineOut, opacity: 1 }}
 			>
 				F
 			</div>
 			<div
-				class="absolute top-[55%] left-[80%] w-[8vw] h-[30vh] flex items-center justify-start"
+				class="absolute top-[55%] left-[81%] w-[8vw] h-[30vh] flex items-center justify-start"
 				in:fly={{ x: '-40vw', duration: 1000, easing: sineOut, opacity: 1 }}
 			>
 				O
 			</div>
 			<div
-				class="absolute top-[55%] left-[85%] w-[8vw] h-[30vh] flex items-center justify-start"
+				class="absolute top-[55%] left-[86%] w-[8vw] h-[30vh] flex items-center justify-start"
 				in:fly={{ x: '-18vw', duration: 1000, easing: sineOut, opacity: 1 }}
 			>
 				L
@@ -106,5 +113,18 @@
 				D
 			</div>
 		</div>
+
+		<!-- <div class="absolute left-[5%] top-[85%] text-jws text-md leading-[1rem]"> -->
+		<!-- 	{#each description as line} -->
+		<!-- 		<TextSlideY -->
+		<!-- 			text={line} -->
+		<!-- 			center={false} -->
+		<!-- 			stagger={true} -->
+		<!-- 			letterDelay={10} -->
+		<!-- 			delay={1000} -->
+		<!-- 			distance={'1lh'} -->
+		<!-- 		/> -->
+		<!-- 	{/each} -->
+		<!-- </div> -->
 	{/if}
 </div>

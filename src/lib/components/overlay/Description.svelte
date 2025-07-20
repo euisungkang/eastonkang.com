@@ -2,10 +2,12 @@
 	import TextSlideY from '../effects/TextSlideY.svelte';
 
 	let {
-		overlayColor = '#FFFFFF',
+		overlayColor,
+		delay = 0,
 		invert = false
 	}: {
 		overlayColor: string;
+		delay?: number;
 		invert?: boolean;
 	} = $props();
 
@@ -18,6 +20,6 @@
         {invert ? 'bottom-12 left-12 items-start' : 'top-12 right-12 items-end'}"
 	style:color={overlayColor}
 >
-	<TextSlideY text={line1} stagger={false} />
-	<TextSlideY text={line2} stagger={false} delay={100} />
+	<TextSlideY text={line1} stagger={false} {delay} />
+	<TextSlideY text={line2} stagger={false} delay={delay + 100} />
 </div>

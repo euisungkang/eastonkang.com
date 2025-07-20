@@ -12,7 +12,7 @@
 
 <a
 	aria-label="Home Logo Button"
-	class="absolute font-tny text-5xl top-8 left-12 z-10"
+	class="absolute font-tny text-5xl top-8 left-12 z-10 select-none"
 	href="/"
 	style:color={overlayColor}
 >

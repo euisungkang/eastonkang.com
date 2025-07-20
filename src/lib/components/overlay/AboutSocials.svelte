@@ -2,9 +2,11 @@
 	import TextSlideY from '../effects/TextSlideY.svelte';
 
 	let {
-		overlayColor = '#FFFFFF'
+		overlayColor,
+		delay = 0
 	}: {
 		overlayColor: string;
+		delay?: number;
 	} = $props();
 </script>
 
@@ -18,7 +20,7 @@
 		target="_blank"
 		rel="noopener noreferrer"
 	>
-		<TextSlideY text={'GITHUB'} />
+		<TextSlideY text={'GITHUB'} {delay} />
 	</a>
 	<a
 		aria-label="LinkedIn"
@@ -26,9 +28,9 @@
 		target="_blank"
 		rel="noopener noreferrer"
 	>
-		<TextSlideY text={'LINKEDIN'} />
+		<TextSlideY text={'LINKEDIN'} {delay} />
 	</a>
 	<a aria-label="Email" href="mailto:easton@lamina.dev" target="_blank" rel="noopener noreferrer">
-		<TextSlideY text={'EMAIL'} />
+		<TextSlideY text={'EMAIL'} {delay} />
 	</a>
 </div>

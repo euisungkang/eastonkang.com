@@ -103,12 +103,14 @@
 >
 	{#each Object.entries(fields) as [label, items]}
 		<div class="flex flex-col w-1/4">
-			<div class="pb-[2.1rem]">{label}</div>
+			<div class="pb-[2.1rem]">
+				<TextSlideY text={label} center={false} stagger={false} delay={0} />
+			</div>
 			{#each items as item, j}
 				{#if item === ''}
 					<div class="pb-[0.7rem]"></div>
 				{:else}
-					<TextSlideY text={item} center={false} stagger={false} delay={50 * j} />
+					<TextSlideY text={item} center={false} stagger={false} delay={50 * (j + 1)} />
 				{/if}
 			{/each}
 		</div>

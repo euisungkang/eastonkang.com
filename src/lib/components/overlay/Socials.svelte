@@ -9,7 +9,7 @@
 </script>
 
 <div
-	class="absolute font-jws z-10 text-xs bottom-12 right-12 flex flex-col items-end leading-3.5"
+	class="absolute font-jws z-10 text-xs bottom-12 right-12 flex flex-col items-end leading-3.5 select-none"
 	style:color={overlayColor}
 >
 	<a

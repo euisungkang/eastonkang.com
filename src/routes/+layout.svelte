@@ -23,9 +23,17 @@
 	});
 </script>
 
+<link
+	rel="preload"
+	as="font"
+	href="/fonts/tny/TNY.woff2"
+	type="font/woff2"
+	crossorigin="anonymous"
+/>
+
 <div class="hidden lg:block">
 	{#if page.url.pathname != '/about'}
-		<Overlay {overlayColor} />
+		<Overlay {overlayColor} simple={page.url.pathname != '/gallery'} />
 	{/if}
 	{@render children?.()}
 </div>
