@@ -1,9 +1,13 @@
 <script lang="ts">
 	import '../app.css';
+	import { dev } from '$app/environment';
+	import { injectAnalytics } from '@vercel/analytics/sveltekit';
 	import { onNavigate } from '$app/navigation';
 	import { colorState } from '$lib/states/color.svelte';
 	import Overlay from '$lib/components/overlay/Overlay.svelte';
 	import { page } from '$app/state';
+
+	injectAnalytics({ mode: dev ? 'development' : 'production' });
 
 	interface Props {
 		children?: import('svelte').Snippet;

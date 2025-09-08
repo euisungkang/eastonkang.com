@@ -11,9 +11,13 @@
 		CLIENTS: [
 			'GSPOWER',
 			'TUFTS',
-			'SPACE.P',
+			'ALCAMO',
 			'',
 			'AIRBALLOON',
+			'SPACE.P',
+			'',
+			'',
+			'HHKANG',
 			'',
 			'',
 			'LAMINA',
@@ -29,6 +33,10 @@
 			'BLINDFOLD'
 		],
 		EXPERIENCE: [
+			'FULLSTACK AI ENGINEER',
+			'ALCAMO MARKETING',
+			'',
+			'',
 			'SECURITY ENGINEER',
 			'TUFTS CYBERSECURITY CLINIC',
 			'',
@@ -82,6 +90,7 @@
 			'',
 			'POSTGRESQL',
 			'MYSQL',
+			'SNOWFLAKE',
 			'REDIS',
 			'FIREBASE',
 			'',

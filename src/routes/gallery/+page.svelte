@@ -12,6 +12,7 @@
 	import V1Overlay from '$lib/components/gallery/V1Overlay.svelte';
 	import BlindOverlay from '$lib/components/gallery/BlindOverlay.svelte';
 	import ArrowHelper from '$lib/components/overlay/ArrowHelper.svelte';
+	import HhOverlay from '$lib/components/gallery/HHOverlay.svelte';
 
 	let gap: string = $state('1%');
 	let selectedIndex: number = $derived(colorState.selectedIndex);
@@ -82,7 +83,7 @@
 			trackVisible = true;
 			expandImage(selectedIndex);
 			console.log('<Developed by Easton Kang> https://eastonkang.com');
-			// expandImage(5);
+			expandImage(6);
 		}, 500);
 	});
 </script>
@@ -146,7 +147,7 @@
 		{:else if selectedIndex == 5}
 			<BlindOverlay color={colorState.overlayColor} {letterReverse} />
 		{:else if selectedIndex == 6}
-			<V1Overlay color={colorState.overlayColor} {letterReverse} />
+			<HhOverlay color={colorState.overlayColor} {letterReverse} />
 		{/if}
 	</div>
 </div>
