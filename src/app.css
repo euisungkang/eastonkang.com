@@ -23,6 +23,14 @@
 }
 
 @layer base {
+  html,
+  body {
+    overscroll-behavior: none;
+    background-color: #121212;
+  }
+}
+
+@layer base {
   @font-face {
     font-family: 'Inter';
     src: url('/fonts/inter/Inter.otf') format('truetype-collection');

@@ -12,11 +12,11 @@
 	} = $props();
 
 	const line1: string = 'FULLSTACK DEVELOPER';
-	const line2: string = invert ? 'AVAILABLE SEPTEMBER 2025' : 'INSPIRED BY ARISTIDE';
+	const line2: string = invert ? 'AVAILABLE SEPTEMBER 2026' : 'INSPIRED BY ARISTIDE';
 </script>
 
 <div
-	class="absolute font-jws text-[0.6rem] leading-2.5 flex flex-col
+	class="absolute font-jws text-[0.6rem] leading-2.5 flex flex-col select-none
         {invert ? 'bottom-12 left-12 items-start' : 'top-12 right-12 items-end'}"
 	style:color={overlayColor}
 >

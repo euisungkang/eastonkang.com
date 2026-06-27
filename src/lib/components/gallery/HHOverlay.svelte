@@ -55,5 +55,5 @@
 	</div>
 
 	<!-- Bottom Overlay -->
-	<DetailOverlay {color} {leftFields} {rightFields} invert={false} path={'/v1'} />
+	<DetailOverlay {color} {leftFields} {rightFields} invert={false} path={'/hh'} />
 {/if}

@@ -91,7 +91,7 @@
 <svelte:window on:keydown={handleKeydown} bind:innerWidth />
 
 <div
-	class="dark h-screen w-screen overflow-hidden transition-colors duration-1000 ease-out"
+	class="dark h-screen w-screen overflow-hidden transition-colors duration-1000 ease-out select-none"
 	style:background-color={colorState.backgroundColor}
 	role="scrollbar"
 	aria-controls="0,1"

@@ -58,7 +58,7 @@
 		],
 		BACKGROUND: [
 			'M.S. COMPUTER SCIENCE',
-			'INCOMING 2025',
+			'ACCEPTED 2025',
 			'',
 			'',
 			'B.S. COMPUTER SCIENCE',
