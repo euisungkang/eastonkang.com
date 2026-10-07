@@ -5,10 +5,12 @@
 
 	let {
 		letter,
-		reverse
+		reverse,
+		instant = false
 	}: {
 		letter: string;
 		reverse: boolean;
+		instant?: boolean;
 	} = $props();
 
 	let visible: boolean = $state(false);
@@ -20,7 +22,7 @@
 
 {#if visible}
 	<div class="w-[8vw] h-[30vh] flex items-center justify-start overflow-hidden select-none">
-		<div in:fly={{ x: reverse ? 150 : -150, easing: sineOut, duration: 1000, opacity: 1 }}>
+		<div in:fly={{ x: reverse ? 150 : -150, easing: sineOut, duration: instant ? 0 : 1000, opacity: 1 }}>
 			{letter}
 		</div>
 	</div>

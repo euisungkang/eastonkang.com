@@ -12,42 +12,50 @@ export type Image = {
   image: string,
   backgroundColor: string,
   overlayColor: string,
+  path: string,
 };
 
 export const images: Array<Image> = [
   {
     image: logo,
     backgroundColor: '#ffc5e7',
-    overlayColor: '#382a6c'
+    overlayColor: '#382a6c',
+    path: '/wavy'
   },
   {
     image: ericko,
     backgroundColor: '#bebebe',
-    overlayColor: '#1e1e1e'
+    overlayColor: '#1e1e1e',
+    path: '/ericko'
   },
   {
     image: limina,
     backgroundColor: '#0a0a0a',
-    overlayColor: '#D72638'
+    overlayColor: '#D72638',
+    path: '/lamina'
   },
   {
     image: spacep,
     backgroundColor: '#010919',
-    overlayColor: '#e6e6e6'
+    overlayColor: '#e6e6e6',
+    path: '/spacep'
   },
   {
     image: mine,
     backgroundColor: '#d5d5d5',
-    overlayColor: '#2a2a2a'
+    overlayColor: '#2a2a2a',
+    path: '/military'
   },
   {
     image: blind,
     backgroundColor: '#778279',
-    overlayColor: '#cabba6'
+    overlayColor: '#cabba6',
+    path: '/blindfold'
   },
   {
     image: hh,
     backgroundColor: '#223061',
-    overlayColor: '#D06A66'
+    overlayColor: '#D06A66',
+    path: '/hh'
   },
 ];

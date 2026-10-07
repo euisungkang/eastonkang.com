@@ -13,7 +13,10 @@
 		simple = false,
 		delay = 0,
 		customLabel = 'EXPLORE',
-		path
+		path,
+		onLeave,
+		instant = false,
+		exit = invert
 	}: {
 		color: string;
 		leftFields: Array<string>;
@@ -23,13 +26,24 @@
 		delay?: number;
 		customLabel?: string;
 		path?: string;
+		onLeave?: (e: MouseEvent) => void;
+		instant?: boolean;
+		exit?: boolean;
 	} = $props();
 
-	let lineHeight: string = $state('0px');
-	let lineWidth: string = $state('0px');
-	let visible: boolean = $state(false);
+	// When instant (e.g. arriving on the gallery from a detail page), render
+	// fully settled with no entrance so it continues seamlessly. The initial
+	// value of `instant` is intentionally captured once (it must not re-animate
+	// if `skipEntrance` later flips while this instance stays mounted).
+	// svelte-ignore state_referenced_locally
+	let lineHeight: string = $state(instant ? '2rem' : '0px');
+	// svelte-ignore state_referenced_locally
+	let lineWidth: string = $state(instant ? '100%' : '0px');
+	// svelte-ignore state_referenced_locally
+	let visible: boolean = $state(instant);
 
 	onMount(() => {
+		if (instant) return;
 		setTimeout(() => {
 			visible = true;
 			setTimeout(() => {
@@ -43,7 +57,10 @@
 {#snippet plus()}
 	{#if visible}
 		<div class="h-[2vh]">
-			<div in:slide={{ duration: 1000, delay: 500, easing: sineOut }}>
+			<div
+				in:slide={{ duration: 1000, delay: 500, easing: sineOut }}
+				out:slide|global={{ duration: exit ? 1000 : 0, easing: sineOut }}
+			>
 				<svg width="auto" height="2vh" viewBox="0 0 14 14">
 					<polygon
 						fill={color}
@@ -66,8 +83,17 @@
 {/snippet}
 
 {#snippet explore()}
-	<a href={path ? path : '/#'} class="flex flex-col items-end text-xs leading-3 cursor-pointer">
-		<TextSlideX text={invert ? 'RETURN' : customLabel} letterDelay={50} />
+	<a
+		href={path ? path : '/#'}
+		onclick={(e) => {
+			if (onLeave) {
+				e.preventDefault();
+				onLeave(e);
+			}
+		}}
+		class="flex flex-col items-end text-xs leading-3 cursor-pointer"
+	>
+		<TextSlideX reverse={exit} {instant} text={invert ? 'RETURN' : customLabel} letterDelay={50} />
 		<div class="relative bg-white w-full">
 			<div
 				class="border-t transition-[width] duration-1000 ease-out
@@ -91,21 +117,21 @@
 			<div class="w-1/4 flex">
 				<div class="w-1/2"></div>
 				<div class="w-1/2 flex-col leading-2.5 text-left items-center">
-					<TextSlideY text="A" />
-					<TextSlideY text="B" delay={50} />
-					<TextSlideY text="C" delay={100} />
-					<TextSlideY text="D" delay={150} />
+					<TextSlideY reverse={exit} {instant} text="A" />
+					<TextSlideY reverse={exit} {instant} text="B" delay={50} />
+					<TextSlideY reverse={exit} {instant} text="C" delay={100} />
+					<TextSlideY reverse={exit} {instant} text="D" delay={150} />
 				</div>
 			</div>
 			<div class="w-1/4 flex flex-col leading-2.5 text-left items-start">
-				<TextSlideY text="COMPLETED" />
-				<TextSlideY text="TYPE" delay={50} />
-				<TextSlideY text="ROLE" delay={100} />
-				<TextSlideY text="CLIENT" delay={150} />
+				<TextSlideY reverse={exit} {instant} text="COMPLETED" />
+				<TextSlideY reverse={exit} {instant} text="TYPE" delay={50} />
+				<TextSlideY reverse={exit} {instant} text="ROLE" delay={100} />
+				<TextSlideY reverse={exit} {instant} text="CLIENT" delay={150} />
 			</div>
 			<div class="w-2/4 text-left items-start flex flex-col leading-2.5">
 				{#each leftFields as s, i}
-					<TextSlideY text={s} delay={50 * i} />
+					<TextSlideY reverse={exit} {instant} text={s} delay={50 * i} />
 				{/each}
 			</div>
 		</div>
@@ -138,7 +164,7 @@
 			<div class="w-1/4"></div>
 			<div class="w-3/4 flex flex-col items-start leading-2.5 text-left">
 				{#each rightFields as s, i}
-					<TextSlideY text={s} delay={i * 50} />
+					<TextSlideY reverse={exit} {instant} text={s} delay={i * 50} />
 				{/each}
 			</div>
 		</div>

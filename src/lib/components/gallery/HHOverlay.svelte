@@ -5,10 +5,14 @@
 
 	let {
 		color,
-		letterReverse
+		letterReverse,
+		path,
+		instant = false
 	}: {
 		color: string;
 		letterReverse: boolean;
+		path: string;
+		instant?: boolean;
 	} = $props();
 
 	let visible: boolean = $state(false);
@@ -32,28 +36,28 @@
 	<!-- Letters -->
 	<div class="relative w-full h-full font-tny text-[20vw] pointer-events-none" style:color>
 		<div class="absolute top-[10%] left-[22.5%]">
-			<LetterSlide reverse={letterReverse} letter="H" />
+			<LetterSlide reverse={letterReverse} {instant} letter="H" />
 		</div>
 		<div class="absolute top-[10%] left-[30%]">
-			<LetterSlide reverse={letterReverse} letter="H" />
+			<LetterSlide reverse={letterReverse} {instant} letter="H" />
 		</div>
 		<div class="absolute top-[55%] left-[61.5%]">
-			<LetterSlide reverse={letterReverse} letter="K" />
+			<LetterSlide reverse={letterReverse} {instant} letter="K" />
 		</div>
 		<div class="absolute top-[55%] left-[67%]">
-			<LetterSlide reverse={letterReverse} letter="A" />
+			<LetterSlide reverse={letterReverse} {instant} letter="A" />
 		</div>
 		<div class="absolute top-[55%] left-[72%]">
-			<LetterSlide reverse={letterReverse} letter="N" />
+			<LetterSlide reverse={letterReverse} {instant} letter="N" />
 		</div>
 		<div class="absolute top-[55%] left-[77%]">
-			<LetterSlide reverse={letterReverse} letter="G" />
+			<LetterSlide reverse={letterReverse} {instant} letter="G" />
 		</div>
 		<!-- <div class="absolute top-[50%] left-[52%]"> -->
-		<!-- 	<LetterSlide reverse={letterReverse} letter="1" /> -->
+		<!-- 	<LetterSlide reverse={letterReverse} {instant} letter="1" /> -->
 		<!-- </div> -->
 	</div>
 
 	<!-- Bottom Overlay -->
-	<DetailOverlay {color} {leftFields} {rightFields} invert={false} path={'/hh'} />
+	<DetailOverlay {color} {leftFields} {rightFields} invert={false} {instant} {path} />
 {/if}

@@ -17,6 +17,9 @@
 	let overlayColor: string = $derived(colorState.overlayColor);
 
 	onNavigate((navigation) => {
+		// Coming forward from the gallery into an individual page: lets the detail
+		// page play the gallery's EXPLORE panel exiting in unison with its entrance.
+		colorState.enteringFromGallery = navigation.from?.url.pathname === '/gallery';
 		if (!document.startViewTransition) return;
 		return new Promise((resolve) => {
 			document.startViewTransition(async () => {

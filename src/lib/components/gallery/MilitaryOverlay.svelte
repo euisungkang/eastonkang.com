@@ -6,9 +6,13 @@
   let {
     color,
     letterReverse,
+    path,
+    instant = false,
   }: {
     color: string,
     letterReverse: boolean,
+    path: string,
+    instant?: boolean,
   } = $props();
 
   let visible: boolean = $state(false);
@@ -34,14 +38,14 @@
     class="relative w-full h-full font-tny text-[20vw] pointer-events-none"
     style:color={color}
   >
-    <div class="absolute top-[10%] left-[17%]"><LetterSlide reverse={letterReverse} letter='O' /></div>
-    <div class="absolute top-[10%] left-[27%]"><LetterSlide reverse={letterReverse} letter='R' /></div>
-    <div class="absolute top-[10%] left-[42%]"><LetterSlide reverse={letterReverse} letter='D' /></div>
-    <div class="absolute top-[10%] left-[52%]"><LetterSlide reverse={letterReverse} letter='N' /></div>
-    <div class="absolute top-[55%] left-[22%]"><LetterSlide reverse={letterReverse} letter='A' /></div>
-    <div class="absolute top-[55%] left-[32%]"><LetterSlide reverse={letterReverse} letter='N' /></div>
-    <div class="absolute top-[55%] left-[47%]"><LetterSlide reverse={letterReverse} letter='C' /></div>
-    <div class="absolute top-[55%] left-[57%]"><LetterSlide reverse={letterReverse} letter='E' /></div>
+    <div class="absolute top-[10%] left-[17%]"><LetterSlide reverse={letterReverse} {instant} letter='O' /></div>
+    <div class="absolute top-[10%] left-[27%]"><LetterSlide reverse={letterReverse} {instant} letter='R' /></div>
+    <div class="absolute top-[10%] left-[42%]"><LetterSlide reverse={letterReverse} {instant} letter='D' /></div>
+    <div class="absolute top-[10%] left-[52%]"><LetterSlide reverse={letterReverse} {instant} letter='N' /></div>
+    <div class="absolute top-[55%] left-[22%]"><LetterSlide reverse={letterReverse} {instant} letter='A' /></div>
+    <div class="absolute top-[55%] left-[32%]"><LetterSlide reverse={letterReverse} {instant} letter='N' /></div>
+    <div class="absolute top-[55%] left-[47%]"><LetterSlide reverse={letterReverse} {instant} letter='C' /></div>
+    <div class="absolute top-[55%] left-[57%]"><LetterSlide reverse={letterReverse} {instant} letter='E' /></div>
   </div>
 
   <!-- Bottom Overlay -->
@@ -49,8 +53,8 @@
     color={color}
     leftFields={leftFields}
     rightFields={rightFields}
-    invert={false}
-    path={'/military'}
+    invert={false} {instant}
+    {path}
   />
 {/if}
 

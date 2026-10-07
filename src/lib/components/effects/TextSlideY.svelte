@@ -9,7 +9,9 @@
 		delay,
 		letterDelay,
 		stagger,
-		distance
+		distance,
+		reverse = false,
+		instant = false
 	}: {
 		text: string;
 		center?: boolean;
@@ -17,11 +19,17 @@
 		letterDelay?: number;
 		stagger?: boolean;
 		distance?: string;
+		reverse?: boolean;
+		instant?: boolean;
 	} = $props();
 
 	let visible: boolean = $state(false);
 
 	onMount(() => {
+		if (instant) {
+			visible = true;
+			return;
+		}
 		setTimeout(() => {
 			visible = true;
 		}, 100);
@@ -36,9 +44,15 @@
 					in:fly={{
 						y: distance ?? '2vh',
 						easing: sineOut,
-						duration: 1000,
-						delay: i * (letterDelay ?? 50),
+						duration: instant ? 0 : 1000,
+						delay: instant ? 0 : i * (letterDelay ?? 50),
 						opacity: 1
+					}}
+					out:fly|global={{
+						y: distance ?? '2vh',
+						easing: sineOut,
+						duration: reverse ? 1000 : 0,
+						delay: reverse ? i * (letterDelay ?? 50) : 0
 					}}
 				>
 					{#if c != ' '}
@@ -54,9 +68,15 @@
 			in:fly={{
 				y: distance ?? '2vh',
 				easing: sineOut,
-				duration: 1000,
-				delay: delay ?? 0,
+				duration: instant ? 0 : 1000,
+				delay: instant ? 0 : (delay ?? 0),
 				opacity: 1
+			}}
+			out:fly|global={{
+				y: distance ?? '2vh',
+				easing: sineOut,
+				duration: reverse ? 1000 : 0,
+				delay: reverse ? (delay ?? 0) : 0
 			}}
 		>
 			{text}

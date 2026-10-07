@@ -6,9 +6,13 @@
   let {
     color,
     letterReverse,
+    path,
+    instant = false,
   }: {
     color: string,
     letterReverse: boolean,
+    path: string,
+    instant?: boolean,
   } = $props();
 
   let visible: boolean = $state(false);
@@ -34,10 +38,10 @@
     class="relative w-full h-full font-tny text-[20vw] pointer-events-none"
     style:color={color}
   >
-    <div class="absolute top-[10%] left-[22%]"><LetterSlide reverse={letterReverse} letter='W' /></div>
-    <div class="absolute top-[10%] left-[37%]"><LetterSlide reverse={letterReverse} letter='A' /></div>
-    <div class="absolute top-[55%] left-[57%]"><LetterSlide reverse={letterReverse} letter='V' /></div>
-    <div class="absolute top-[55%] left-[72%]"><LetterSlide reverse={letterReverse} letter='Y' /></div>
+    <div class="absolute top-[10%] left-[22%]"><LetterSlide reverse={letterReverse} {instant} letter='W' /></div>
+    <div class="absolute top-[10%] left-[37%]"><LetterSlide reverse={letterReverse} {instant} letter='A' /></div>
+    <div class="absolute top-[55%] left-[57%]"><LetterSlide reverse={letterReverse} {instant} letter='V' /></div>
+    <div class="absolute top-[55%] left-[72%]"><LetterSlide reverse={letterReverse} {instant} letter='Y' /></div>
   </div>
 
   <!-- Bottom Overlay -->
@@ -45,8 +49,8 @@
     color={color}
     leftFields={leftFields}
     rightFields={rightFields}
-    invert={false}
-    path={'/wavy'}
+    invert={false} {instant}
+    {path}
   />
 {/if}
 

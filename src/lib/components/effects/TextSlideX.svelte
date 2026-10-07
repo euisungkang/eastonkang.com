@@ -6,14 +6,22 @@
   let {
     text,
     letterDelay,
+    reverse = false,
+    instant = false,
   }: {
     text: string,
     letterDelay?: number,
+    reverse?: boolean,
+    instant?: boolean,
   } = $props();
 
   let visible: boolean = $state(false);
 
   onMount(() => {
+    if (instant) {
+      visible = true;
+      return;
+    }
     setTimeout(() => {
       visible = true;
     }, 100);
@@ -37,8 +45,14 @@
           in:slide={{
             axis: 'x',
             easing: sineOut,
-            duration: 1000, 
-            delay: i * (letterDelay ?? 50) 
+            duration: instant ? 0 : 1000,
+            delay: instant ? 0 : i * (letterDelay ?? 50)
+          }}
+          out:slide|global={{
+            axis: 'x',
+            easing: sineOut,
+            duration: reverse ? 1000 : 0,
+            delay: reverse ? i * (letterDelay ?? 50) : 0
           }}
         >
         {#if c != ' '}

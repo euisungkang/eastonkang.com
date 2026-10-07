@@ -11,8 +11,8 @@
 		invert?: boolean;
 	} = $props();
 
-	const line1: string = 'FULLSTACK DEVELOPER';
-	const line2: string = invert ? 'AVAILABLE SEPTEMBER 2026' : 'INSPIRED BY ARISTIDE';
+	const line1: string = 'FULLSTACK ENGINEER';
+	const line2: string = invert ? 'AVAILABLE NOW' : 'INSPIRED BY ARISTIDE';
 </script>
 
 <div

@@ -33,7 +33,7 @@
 			'BLINDFOLD'
 		],
 		EXPERIENCE: [
-			'FULLSTACK AI ENGINEER',
+			'SOFTWARE & GTM ENGINEER',
 			'ALCAMO MARKETING',
 			'',
 			'',
@@ -58,6 +58,7 @@
 		],
 		BACKGROUND: [
 			'M.S. COMPUTER SCIENCE',
+			'TUFTS UNIVERSITY',
 			'ACCEPTED 2025',
 			'',
 			'',
@@ -82,6 +83,7 @@
 			'SPRING',
 			'NODE',
 			'REACT',
+			'PYDANTIC',
 			'SVELTE',
 			'FLUTTER',
 			'',

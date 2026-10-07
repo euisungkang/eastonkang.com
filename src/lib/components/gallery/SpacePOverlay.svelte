@@ -6,9 +6,13 @@
   let {
     color,
     letterReverse,
+    path,
+    instant = false,
   }: {
     color: string,
     letterReverse: boolean,
+    path: string,
+    instant?: boolean,
   } = $props();
 
   const leftFields: Array<string> = [
@@ -23,10 +27,13 @@
   ];
 
   let visible: boolean = $state(false);
-  let ballSize: string = $state('0px');
+  // When instant, the periods start settled so only the slide back plays.
+  // svelte-ignore state_referenced_locally
+  let ballSize: string = $state(instant ? '5vw' : '0px');
 
   onMount(() => {
     visible = true;
+    if (instant) return;
     setTimeout(() => {
       ballSize = '5vw';
     }, 100);
@@ -39,12 +46,12 @@
     class="relative w-full h-full font-tny text-[20vw] pointer-events-none"
     style:color={color}
   >
-    <div class="absolute top-[10%] left-[22%]"><LetterSlide reverse={letterReverse} letter='S' /></div>
-    <div class="absolute top-[10%] left-[35%]"><LetterSlide reverse={letterReverse} letter='P' /></div>
-    <div class="absolute top-[10%] left-[40%]"><LetterSlide reverse={letterReverse} letter='A' /></div>
-    <div class="absolute top-[10%] left-[60%]"><LetterSlide reverse={letterReverse} letter='C' /></div>
-    <div class="absolute top-[10%] left-[73%]"><LetterSlide reverse={letterReverse} letter='E' /></div>
-    <div class="absolute top-[55%] left-[40%]"><LetterSlide reverse={letterReverse} letter='P' /></div>
+    <div class="absolute top-[10%] left-[22%]"><LetterSlide reverse={letterReverse} {instant} letter='S' /></div>
+    <div class="absolute top-[10%] left-[35%]"><LetterSlide reverse={letterReverse} {instant} letter='P' /></div>
+    <div class="absolute top-[10%] left-[40%]"><LetterSlide reverse={letterReverse} {instant} letter='A' /></div>
+    <div class="absolute top-[10%] left-[60%]"><LetterSlide reverse={letterReverse} {instant} letter='C' /></div>
+    <div class="absolute top-[10%] left-[73%]"><LetterSlide reverse={letterReverse} {instant} letter='E' /></div>
+    <div class="absolute top-[55%] left-[40%]"><LetterSlide reverse={letterReverse} {instant} letter='P' /></div>
 
     <!-- Periods -->
     <div class="absolute w-[5vw] h-[5vw] top-[60%] left-[32%] flex items-center justify-center">
@@ -70,8 +77,8 @@
     color={color}
     leftFields={leftFields}
     rightFields={rightFields}
-    invert={false}
-    path={'/spacep'}
+    invert={false} {instant}
+    {path}
   />
 {/if}
 

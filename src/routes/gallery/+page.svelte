@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 	import { fly } from 'svelte/transition';
 	import { images } from '$lib/constants/images';
 	import { sineOut } from 'svelte/easing';
@@ -14,16 +15,26 @@
 	import ArrowHelper from '$lib/components/overlay/ArrowHelper.svelte';
 	import HhOverlay from '$lib/components/gallery/HHOverlay.svelte';
 
-	let gap: string = $state('1%');
+	// Arriving from a detail page: seed the track at the selected item so the
+	// scroll position is correct on the first frame (no whole-track scroll-in).
+	const returning: boolean = colorState.returning;
+	const returnIndex: number = colorState.selectedIndex;
+	const returnPercentage: number = -21 * returnIndex + 25;
+
+	let gap: string = $state(returning ? '7%' : '1%');
 	let selectedIndex: number = $derived(colorState.selectedIndex);
-	let grayscaleIndex: number = $state(0);
+	let path: string = $derived(selectedIndex == -1 ? '' : images[selectedIndex].path);
+	let grayscaleIndex: number = $state(returning ? returnIndex : 0);
 	let mouseDownX: number = 0;
-	let mouseUpX: number = 50;
+	let mouseUpX: number = returning ? returnPercentage : 50;
 	let innerWidth: number = $state(0);
-	let percentage: number = $state(50);
-	let imagePercentage: number = $state(100);
+	let percentage: number = $state(returning ? returnPercentage : 50);
+	let imagePercentage: number = $state(returning ? 50 : 100);
 	let letterReverse: boolean = $state(false); // ! = left -> right
+	// trackVisible stays false initially so the image in: transitions still play
+	// (Svelte skips intros for elements present on the very first render).
 	let trackVisible: boolean = $state(false);
+	let skipEntrance: boolean = $state(returning); // true on arrival from a detail page
 
 	function expandImage(i: number) {
 		if (i == -1) return;
@@ -41,6 +52,7 @@
 
 	function mouseDownAt(e: MouseEvent) {
 		mouseDownX = e.clientX;
+		skipEntrance = false; // user is interacting: let subsequent overlays animate
 	}
 
 	function mouseUpAt() {
@@ -49,9 +61,12 @@
 	}
 
 	function handleKeydown(e: KeyboardEvent) {
+		skipEntrance = false;
 		if (e.key === 'ArrowLeft' && selectedIndex > 0) expandImage(selectedIndex - 1);
 		else if (e.key === 'ArrowRight' && selectedIndex < images.length - 1)
 			expandImage(selectedIndex + 1);
+		// Down opens the focused item, same as its EXPLORE link.
+		else if (e.key === 'ArrowDown' && selectedIndex != -1) goto(path);
 	}
 
 	function mouseMove(e: MouseEvent) {
@@ -79,12 +94,18 @@
 	}
 
 	onMount(() => {
-		setTimeout(() => {
+		console.log('<Developed by Easton Kang> https://eastonkang.com');
+		if (returning) {
+			// Track is already seeded at the selected position; just reveal the
+			// images (so their in: transitions play) and clear the flag.
 			trackVisible = true;
-			expandImage(selectedIndex);
-			console.log('<Developed by Easton Kang> https://eastonkang.com');
-			// expandImage(6);
-		}, 500);
+			colorState.returning = false;
+		} else {
+			setTimeout(() => {
+				trackVisible = true;
+				expandImage(selectedIndex);
+			}, 500);
+		}
 	});
 </script>
 
@@ -121,7 +142,14 @@
 						class="object-cover object-center select-none h-[50vh]
                    transition-[object-position,width,filter,opacity,margin-left] duration-1000 ease-out"
 						onclick={() => expandImage(i)}
-						in:fly={{ x: '50vw', duration: 1000 + 50 * i, easing: sineOut, delay: 100 * i }}
+						in:fly={{
+							// On return: selected image is instant (seamless handoff),
+							// the rest fade in place (x: 0) instead of popping.
+							x: skipEntrance ? 0 : '50vw',
+							duration: skipEntrance ? (i === selectedIndex ? 0 : 600) : 1000 + 50 * i,
+							easing: sineOut,
+							delay: skipEntrance ? 0 : 100 * i
+						}}
 						style:object-position="{imagePercentage}% center"
 						style:margin-left={i != 0 ? gap : '0%'}
 						style:filter="grayscale({i == grayscaleIndex ? 0 : 100}%)"
@@ -135,19 +163,39 @@
 		</div>
 
 		{#if selectedIndex == 0}
-			<WavyOverlay color={colorState.overlayColor} {letterReverse} />
+			<WavyOverlay color={colorState.overlayColor} {letterReverse} {path} instant={skipEntrance} />
 		{:else if selectedIndex == 1}
-			<EricKoOverlay color={colorState.overlayColor} {letterReverse} />
+			<EricKoOverlay
+				color={colorState.overlayColor}
+				{letterReverse}
+				{path}
+				instant={skipEntrance}
+			/>
 		{:else if selectedIndex == 2}
-			<LaminaOverlay color={colorState.overlayColor} {letterReverse} />
+			<LaminaOverlay
+				color={colorState.overlayColor}
+				{letterReverse}
+				{path}
+				instant={skipEntrance}
+			/>
 		{:else if selectedIndex == 3}
-			<SpacePOverlay color={colorState.overlayColor} {letterReverse} />
+			<SpacePOverlay
+				color={colorState.overlayColor}
+				{letterReverse}
+				{path}
+				instant={skipEntrance}
+			/>
 		{:else if selectedIndex == 4}
-			<MilitaryOverlay color={colorState.overlayColor} {letterReverse} />
+			<MilitaryOverlay
+				color={colorState.overlayColor}
+				{letterReverse}
+				{path}
+				instant={skipEntrance}
+			/>
 		{:else if selectedIndex == 5}
-			<BlindOverlay color={colorState.overlayColor} {letterReverse} />
+			<BlindOverlay color={colorState.overlayColor} {letterReverse} {path} instant={skipEntrance} />
 		{:else if selectedIndex == 6}
-			<HhOverlay color={colorState.overlayColor} {letterReverse} />
+			<HhOverlay color={colorState.overlayColor} {letterReverse} {path} instant={skipEntrance} />
 		{/if}
 	</div>
 </div>
